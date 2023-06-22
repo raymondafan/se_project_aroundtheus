@@ -18,7 +18,7 @@
 }
 .header{
   margin-top: 45px;
- 
+
 }
 .content{
 
@@ -67,4 +67,33 @@ grid-gap: 9px 17px;
   object-fit: cover;
   background-position: center;
   margin-right: 26px;
+}
+.cards{
+  *fonts*
+}
+.card__list{
+  display: grid;
+}
+.card{}
+.card__image{
+width: 282px;
+height: 282px;
+
+}
+.card__description{
+  display: flex;
+  background:white;
+  color: black;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 282px;
+}
+.card__like-button{
+  background: transparent url(../images/heart.svg) center no-repeat;
+  height: 18px;
+  width: 21px;
 }
