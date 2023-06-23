@@ -58,7 +58,8 @@ grid-gap: 9px 17px;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
-  grid-area: description;margin: 0;
+  grid-area: description;
+  margin: 0;
 }
 .profile__image{
   width: 120px;
@@ -69,15 +70,27 @@ grid-gap: 9px 17px;
   margin-right: 26px;
 }
 .cards{
+  margin-top: 48px;
 
 }
 .card__list{
   display: grid;
+  grid-template-columns: repeat(auto-fit,282px);
+grid-gap:20px 17px ;
+justify-content: center;
+padding: 0;
+margin: 0;
 }
-.card{}
+.card{
+  display: flex;
+ flex-direction: column;
+  width: 282px;
+  list-style-type: none;
+}
 .card__image{
-width: 282px;
 height: 282px;
+border-radius: 10px 10px 0px 0px;
+
 
 }
 .card__description{
@@ -90,10 +103,16 @@ height: 282px;
   padding-right: 20px;
   align-items: center;
   justify-content: space-between;
-  max-width: 282px;
+  border-radius: 0px 0px 10px 10px ;
+
+
+
 }
 .card__like-button{
   background: transparent url(../images/heart.svg) center no-repeat;
   height: 18px;
   width: 21px;
+  border: none;
+
 }
+
