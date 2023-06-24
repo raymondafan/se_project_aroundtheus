@@ -120,7 +120,15 @@ border-radius: 10px 10px 0px 0px;
   border: none;
 
 }
+.card__list-item {
+  display: flex;
 
+  margin: 41px 0 0;
+}
+.card__list-divider {
+  flex-grow: 1;
+  border-bottom: lightslategray solid 1px;
+}
 @media screen and (max-width: 480px){
   .profile{
     flex-direction: column;
