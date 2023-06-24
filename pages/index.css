@@ -1,6 +1,6 @@
 .page{
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
 
 }
 .page__section{
@@ -18,7 +18,7 @@
 }
 .header{
   margin-top: 45px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #5454;
 padding-bottom: 41px;
 
 }
@@ -103,8 +103,8 @@ border-radius: 10px 10px 0px 0px;
 }
 .card__description{
   display: flex;
-  background:white;
-  color: black;
+  background:#fff;
+  color: #000;
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 20px;
