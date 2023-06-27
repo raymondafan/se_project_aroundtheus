@@ -21,4 +21,4 @@ The way you'll do this at work is by exporting images directly from Figma — we
 Good luck and have fun!
 Link to 
 GitHub:
-https://github.com/raymondafan/se_project_aroundtheus
+git@github.com:raymondafan/se_project_aroundtheus.git
