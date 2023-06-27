@@ -1,7 +1,7 @@
 .cards {
   padding-top: 48px;
 }
-.card__list {
+.cards__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 20px 17px;
