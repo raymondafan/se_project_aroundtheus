@@ -1,8 +1,13 @@
 .footer{
  background-color: #000;
 
+
 }
 .footer__copyright{
   font-size: 18px;
   color: #545454;
+  margin: 0 auto;
+    padding-top: 67px;
+    padding-bottom: 60px;
+    max-width: 880px;
 }

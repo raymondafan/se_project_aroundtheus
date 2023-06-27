@@ -20,7 +20,8 @@ grid-template-columns: minmax(auto, 373px) auto;
  grid-area: button;
  margin-left: 18px;
  opacity: 100%;
-
+ border-radius: 2px;
+ border: 2px solid #FFF;
 }
 .profile__edit-button:hover{
 opacity: 70%;
@@ -32,6 +33,8 @@ transition: 0.65s ease-in-out;
   width: 150px;
   margin-left: auto;
   opacity: 100%;
+  border-radius: 2px;
+border: 2px solid #FFF;
 }
 .profile__add-button:hover{
   opacity: 70%;
@@ -43,7 +46,7 @@ transition: 0.65s ease-in-out;
   line-height: 48px;
   grid-area: title;
   margin:0 0 7px;
-
+text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 373px;
   overflow:hidden;
@@ -55,6 +58,10 @@ transition: 0.65s ease-in-out;
 
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 373px;
+    overflow: hidden;
 
 }
 .profile__image{
