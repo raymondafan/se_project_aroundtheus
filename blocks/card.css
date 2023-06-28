@@ -1,7 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 282px;
+
   list-style-type: none;
 }
 .card__image {
@@ -12,10 +12,7 @@
   display: flex;
   background: #fff;
   color: #000;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 25px 20px;
   align-items: center;
   justify-content: space-between;
   border-radius: 0px 0px 10px 10px;
@@ -26,10 +23,11 @@
   width: 21px;
   border: none;
   opacity: 100%;
+  cursor: pointer;
+  transition: 0.65s ease-in-out;
 }
 .card__like-button:hover {
-  opacity: 70%;
-  transition: 0.65s ease-in-out;
+  opacity: 50%;
 }
 .card__title {
   margin: 0;

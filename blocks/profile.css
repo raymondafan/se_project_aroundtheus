@@ -1,31 +1,29 @@
-.profile{
+.profile {
   display: flex;
   align-items: center;
   padding-top: 36px;
   flex-direction: row;
-
-
 }
-.profile__info{
+.profile__info {
   display: grid;
   align-items: center;
-grid-template-areas: "title button" "description description";
-grid-template-columns: minmax(auto, 373px) auto;
-
+  grid-template-areas: "title button" "description description";
+  grid-template-columns: minmax(auto, 373px) auto;
 }
-.profile__edit-button{
+.profile__edit-button {
   background: transparent url(../images/pen.svg) center no-repeat;
- height: 24px;
- width: 24px;
- grid-area: button;
- margin-left: 18px;
- opacity: 100%;
- border-radius: 2px;
- border: 2px solid #FFF;
+  height: 24px;
+  width: 24px;
+  grid-area: button;
+  margin-left: 18px;
+  opacity: 100%;
+
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: 0.65s ease-in-out;
 }
-.profile__edit-button:hover{
-opacity: 70%;
-transition: 0.65s ease-in-out;
+.profile__edit-button:hover {
+  opacity: 50%;
 }
 .profile__add-button {
   background: transparent url(../images/plus.svg) center no-repeat;
@@ -34,37 +32,36 @@ transition: 0.65s ease-in-out;
   margin-left: auto;
   opacity: 100%;
   border-radius: 2px;
-border: 2px solid #FFF;
-}
-.profile__add-button:hover{
-  opacity: 70%;
+  border: 2px solid #fff;
+  cursor: pointer;
   transition: 0.65s ease-in-out;
 }
-.profile__title{
+.profile__add-button:hover {
+  opacity: 50%;
+}
+.profile__title {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   grid-area: title;
-  margin:0 0 7px;
-text-overflow: ellipsis;
+  margin: 0 0 7px;
+  text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 373px;
-  overflow:hidden;
-
+  overflow: hidden;
 }
-.profile__description{
+.profile__description {
   font-size: 18px;
   line-height: 22px;
 
   grid-area: description;
   margin: 0;
   text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 373px;
-    overflow: hidden;
-
+  white-space: nowrap;
+  max-width: 373px;
+  overflow: hidden;
 }
-.profile__image{
+.profile__image {
   width: 120px;
   height: 120px;
   border-radius: 50%;

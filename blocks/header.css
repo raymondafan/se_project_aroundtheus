@@ -1,20 +1,12 @@
-.header{
+.header {
   padding-top: 45px;
-  border-bottom: 1px solid #5454;
-padding-bottom: 41px;
-
+  border-bottom: 1px solid rgba(54, 54, 54,0.699999988079071);
+  padding-bottom: 41px;
 }
-.header__logo{
+.header__logo {
   height: 33px;
   width: 173px;
 }
 
-.header__line {
-  display: flex;
 
-  margin: 41px 0 0;
-}
-.header__line-divider {
-  flex-grow: 1;
-  border-bottom: lightslategray solid 1px;
-}
+

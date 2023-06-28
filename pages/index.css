@@ -1,6 +1,5 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
-@import url(../blocks/content.css);
 @import url(../blocks/footer.css);
 @import url(../blocks/header.css);
 @import url(../blocks/page.css);
@@ -30,6 +29,8 @@
     margin: 0;
     font-size: 22px;
     font-weight: 500;
+    line-height: normal;
+    max-width: 196px;
   }
   .profile__info {
     display: flex;
