@@ -25,6 +25,7 @@
   .profile {
     flex-direction: column;
   }
+
   .profile__title {
     margin: 0;
     font-size: 22px;
@@ -53,5 +54,19 @@
     margin-left: 10px;
     height: 18px;
     width: 18px;
+  }
+  .cards {
+    padding-top: 36px;
+  }
+  .footer__copyright {
+    font-size: 14px;
+    color: #545454;
+    margin: 0 auto;
+    padding-top: 48px;
+    padding-bottom: 36px;
+    max-width: 282px;
+  }
+  .profile__image {
+    margin-right: 0;
   }
 }

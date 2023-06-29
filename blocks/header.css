@@ -1,12 +1,9 @@
 .header {
   padding-top: 45px;
-  border-bottom: 1px solid rgba(54, 54, 54,0.699999988079071);
+  border-bottom: 1px solid rgba(54, 54, 54, 0.699999988079071);
   padding-bottom: 41px;
 }
 .header__logo {
   height: 33px;
   width: 173px;
 }
-
-
-
