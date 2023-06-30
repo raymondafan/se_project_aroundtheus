@@ -9,3 +9,13 @@
   padding-bottom: 60px;
   max-width: 880px;
 }
+@media screen and (max-width: 650px) {
+  .footer__copyright {
+    font-size: 14px;
+    color: #545454;
+    margin: 0 auto;
+    padding-top: 48px;
+    padding-bottom: 36px;
+    max-width: 282px;
+  }
+}
