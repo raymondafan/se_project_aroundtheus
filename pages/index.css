@@ -21,6 +21,7 @@
   .header__logo {
     height: 24px;
     width: 126px;
+    padding: 0 27px;
   }
   .profile {
     flex-direction: column;
@@ -49,12 +50,13 @@
   .profile__add-button {
     margin: 0;
     width: 100%;
-   
+    background-size: 16px 16px;
   }
   .profile__edit-button {
     margin-left: 10px;
     height: 18px;
     width: 18px;
+    background-size: 7.5px 7.5px;
   }
   .cards {
     padding-top: 36px;
@@ -69,5 +71,14 @@
   }
   .profile__image {
     margin-right: 0;
+  }
+  .page__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+  }
+  .content {
+    padding: 0 19px;
   }
 }
