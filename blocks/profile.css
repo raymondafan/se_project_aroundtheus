@@ -23,7 +23,7 @@
   transition: 0.65s ease-in-out;
 }
 .profile__edit-button:hover {
-  opacity: 50%;
+  opacity: 60%;
 }
 .profile__add-button {
   background: transparent url(../images/plus.svg) center no-repeat;
@@ -37,7 +37,7 @@
   transition: 0.65s ease-in-out;
 }
 .profile__add-button:hover {
-  opacity: 50%;
+  opacity: 60%;
 }
 .profile__title {
   font-size: 42px;
