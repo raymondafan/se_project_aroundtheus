@@ -28,8 +28,6 @@
   position: relative;
   height: 330px;
   width: 430px;
-
-
 }
 .modal__close {
   position: absolute;
@@ -44,15 +42,15 @@
   background-size: contain;
   cursor: pointer;
 }
-.modal__button{
+.modal__button {
   height: 51px;
   width: 100%;
   background-color: #000;
   color: #fff;
-
-
 }
-.modal__fieldset{
-  border: none;
-  width: 100%;
+.modal__fieldset {
+  border-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
