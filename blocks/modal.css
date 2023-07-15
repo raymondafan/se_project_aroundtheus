@@ -39,7 +39,12 @@
   height: 40px;
   background-repeat: no-repeat;
   background-size: contain;
+  opacity: 100%;
   cursor: pointer;
+  transition: 0.65s ease-in-out;
+}
+.modal__close:hover{
+  opacity: 60%;
 }
 .modal__button {
   height: 51px;
@@ -51,6 +56,12 @@
   align-items: center;
   justify-content: center;
   border: none;
+  opacity: 100%;
+  cursor: pointer;
+  transition: 0.65s ease-in-out;
+}
+.modal__button:hover{
+opacity: 80%;
 }
 
 @media screen and (max-width: 650px) {
