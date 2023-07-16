@@ -20,7 +20,7 @@
 
   border: 1px solid #fff;
   cursor: pointer;
-  transition: 0.65s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 .profile__edit-button:hover {
   opacity: 60%;
@@ -34,7 +34,7 @@
   border-radius: 2px;
   border: 2px solid #fff;
   cursor: pointer;
-  transition: 0.65s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 .profile__add-button:hover {
   opacity: 60%;
