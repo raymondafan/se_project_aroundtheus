@@ -76,6 +76,6 @@ const cardTitleEl= cardElement.querySelector(".card__title");
 cardTitleEl.textContent = cardData.name;
 
 //return the ready HTML element with the filled-in data
-//return cardElement;
+
 cardListEl.append(cardElement);
 });
