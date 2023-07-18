@@ -39,7 +39,7 @@ const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-const cardLinkEl = document.querySelector(".card__image");
+
 //functions
 function closePopup() {
   profileEditModal.classList.remove("modal__opened");
