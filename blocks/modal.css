@@ -18,7 +18,8 @@
   line-height: normal;
   margin: 0 0 24px 0;
 }
-.modal-form_opened {
+.modal__opened {
+  display: flex;
   visibility: visible;
 }
 .modal__container {
@@ -50,7 +51,7 @@
   opacity: 60%;
 }
 .modal__button {
-  height: 46px;
+  height: 50px;
   width: 100%;
   background: #000;
   color: #fff;
@@ -83,6 +84,7 @@
   }
   .modal__button {
     font-size: 14px;
+    height: 46px;
   }
 }
 @media screen and (max-width: 550px) {
