@@ -5,11 +5,14 @@
   flex-direction: column;
   border: none;
   margin: 0;
+  gap: 15px;
 }
 .form__input {
   width: 100%;
-  line-height: 58px;
+  line-height: 14px;
   border: 0;
-  box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  padding: 13px 2px;
+
 }
