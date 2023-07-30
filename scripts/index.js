@@ -77,12 +77,7 @@ function handleAddCardFormSubmit(e) {
 renderCard({name,link}, cardListEl)
   closePopup(addCardModal);
 }
-// function handleProfileOpen() {
-//   profileTitleInput.value = profileTitle.textContent;
-//   profileDescriptionInput.value = profileDescription.textContent;
-//   profileEditModal.classList.add("modal_opened");
 
-// }
 function handleProfileOpen(modal) {
   modal.classList.add("modal_opened");
 }
