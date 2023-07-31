@@ -42,26 +42,34 @@ const addCardFormElement = addCardModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-const addNewCardButton = document.querySelector(".profile__add-button ");
+const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
-//functions
 
+
+//functions
 function getCardElement(cardData) {
-  //clone the template element with all its content and store it in a cardElement variable
   const cardElement = cardTemplate.cloneNode(true);
-  //access the card title and image and store them in variables
+
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  //set the path to the image to the link field of the object
-  //set the image alt text to the name field of the object
+  const likeButton = cardElement.querySelector(".card__like-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
-  //set the card title to the name field of the object, too
+
   cardTitleEl.textContent = cardData.name;
-  //return the ready HTML element with the filled-in data
+
   return cardElement;
+  // find delete button
+  //add event listener to delete button
+  //to remove this card use cardElement.remove();
+  // add click listener to cardImage element
+  //openModal with previewImageModal add it into html them find preview image modal in const
 }
+
 
 //Event Handlers
 function handlerProfileEditSubmit(e) {
@@ -74,7 +82,7 @@ function handleAddCardFormSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-renderCard({name,link}, cardListEl)
+  renderCard({ name, link }, cardListEl);
   closePopup(addCardModal);
 }
 
@@ -86,7 +94,7 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 function renderCard(cardData, wrapper) {
-  const cardElement= getCardElement(cardData);
+  const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
 }
 //Event Listeners
