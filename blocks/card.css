@@ -1,7 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-
+  position: relative;
   list-style-type: none;
 }
 .card__image {
@@ -26,9 +26,8 @@
   cursor: pointer;
   transition: 0.25s ease-in-out;
 }
-.card__like-button_active{
-background-image: url(../images/like-active.svg);
-
+.card__like-button_active {
+  background-image: url(../images/like-active.svg);
 }
 .card__like-button:hover {
   opacity: 50%;
@@ -41,4 +40,20 @@ background-image: url(../images/like-active.svg);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.card__trash-button {
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  height: 19px;
+  width: 18px;
+  grid-area: button;
+  opacity: 100%;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+.card__trash-button:hover {
+  opacity: 60%;
 }

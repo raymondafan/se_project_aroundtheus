@@ -22,6 +22,7 @@
   cursor: pointer;
   transition: 0.25s ease-in-out;
 }
+
 .profile__edit-button:hover {
   opacity: 60%;
 }
