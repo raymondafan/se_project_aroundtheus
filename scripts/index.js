@@ -47,6 +47,7 @@ const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
 
+
 //functions
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -54,9 +55,15 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
+  const cardTrashButton= cardElement.querySelector(".card__trash-button");
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
+
+  cardTrashButton.addEventListener("click", () => {
+    cardTrashButton.cardElement.remove("card");
+  });
+
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
 
