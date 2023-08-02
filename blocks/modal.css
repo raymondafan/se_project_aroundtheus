@@ -68,7 +68,15 @@
 .modal__button:hover {
   opacity: 80%;
 }
-
+.modal__image{
+  max-height: 75vh;
+  max-width: 75vw;
+}
+.modal__preview{
+  
+  box-sizing: border-box;
+  position: relative;
+}
 @media screen and (max-width: 650px) {
   .modal__heading {
     margin: 0 0 60px 0;

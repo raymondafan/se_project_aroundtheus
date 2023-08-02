@@ -79,14 +79,16 @@
         <form class="form modal__form" name="form" id="add-card-form">
           <fieldset class="form__fieldset">
             <input
-              class="form__input" id="form-input-title"
+              class="form__input"
+              id="form-input-title"
               placeholder="title"
               id="profile-title-input"
               type="text"
               name="title"
             />
             <input
-              class="form__input" id="form-input-url"
+              class="form__input"
+              id="form-input-url"
               placeholder="Image URL"
               id="profile-description-input"
               type="text"
@@ -99,14 +101,25 @@
         </form>
       </div>
     </div>
+    <div class="modal" id="preview-image-modal">
+      <div class="modal__preview">
+        <button class="modal__close" type="button"></button>
+        <form class="form modal__form" name="form" id="add-card-form">
+          <fieldset class="form__fieldset">
+            <img src="" class="modal__image" alt="" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
-        <img src="" class="card__image" alt=""/>
+        <img src="" class="card__image" alt="" />
         <button
-        class="card__trash-button"
-        id="card-trash-button"
-        type="button"
-      ></button>
+          class="card__trash-button"
+          id="card-trash-button"
+          type="button"
+        ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
