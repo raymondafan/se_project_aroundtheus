@@ -40,6 +40,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+
+}
+.card__preview{
+  font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 10px;
+    font-size: 12px;
 }
 .card__trash-button {
   background: transparent url(../images/Trash.svg) center no-repeat;

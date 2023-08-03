@@ -8,6 +8,7 @@
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #eee;
 }
 .modal__heading {
   color: #000;
@@ -17,12 +18,12 @@
   line-height: normal;
   margin: 0 0 24px 0;
 }
+
 .modal_opened {
   display: flex;
 }
 .modal__container {
   background-color: #fff;
-
   max-width: 430px;
   width: 100%;
   border-radius: 10px;
@@ -30,6 +31,15 @@
   padding: 36px;
   box-sizing: border-box;
   position: relative;
+}
+.modal > .modal__container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.modal:hover > .modal__container {
+  visibility: visible;
+  opacity: 1;
 }
 .modal__close {
   position: absolute;
@@ -48,6 +58,15 @@
 }
 .modal__close:hover {
   opacity: 60%;
+}
+.modal > .modal__close {
+  visibility: hidden;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.modal:hover > .modal__close {
+  visibility: visible;
+  opacity: 0;
 }
 .modal__button {
   height: 50px;
@@ -68,14 +87,22 @@
 .modal__button:hover {
   opacity: 80%;
 }
-.modal__image{
+.modal__image {
   max-height: 75vh;
   max-width: 75vw;
 }
-.modal__preview{
-  
+.modal__preview {
   box-sizing: border-box;
   position: relative;
+}
+.modal > .modal__preview {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.modal:hover > .modal__preview {
+  visibility: visible;
+  opacity: 1;
 }
 @media screen and (max-width: 650px) {
   .modal__heading {
