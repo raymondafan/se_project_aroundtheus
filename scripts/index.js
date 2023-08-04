@@ -30,8 +30,7 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImage = previewImageModal.querySelector(".modal__image");
-const previewImageModalTitle =
-  previewImageModal.querySelector(".card__preview");
+const previewImageModalTitle = previewImageModal.querySelector(".modal__title");
 const addCardModal = document.querySelector("#add-card-modal");
 const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
 const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
