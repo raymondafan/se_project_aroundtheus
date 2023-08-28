@@ -19,9 +19,9 @@ setEventListeners(formElement, options);
 // add error class to input
 // display error message
 // disable button
-// if all inputs valid
-// then enable button
-// and reset error messages
+//if all inputs valid
+//enable button
+//reset error messages
   });
 }
 
