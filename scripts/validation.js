@@ -1,9 +1,24 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
+function showInputError(formElement, inputElement, options){
+const errorMessageElement= 
+}
+function checkInputValidity(formElement, inputElement, options){
+if (!inputElement.validity){
+  showInputError(formElement, inputElement, options);
+} else{
+  hideInputError(formElement, inputElement, options);
+ }
+}
 function setEventListeners(formElement, options){
   const {inputSelector}= options;
   const inputElements= [...formElement.querySelectorAll(inputSelector)];
-
+inputElements.forEach(inputElement =>{
+  inputElement.addEventListener("input", (e)=> {
+    checkInputValidity(formElement, inputElement,options)
+console.log(inputElement.validationMessage);
+  });
+});
 }
 function enableValidation(options) {
   const formElements= [...document.querySelectorAll(options.formSelector)];
@@ -22,7 +37,7 @@ setEventListeners(formElement, options);
 //if all inputs valid
 //enable button
 //reset error messages
-//suphello 
+
   });
 }
 
