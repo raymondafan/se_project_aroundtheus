@@ -61,17 +61,21 @@
               minlength="2"
               required
             />
-            <span class="popup__error"></span>
+            <span class="popup__error" id="profile-title-input-error"></span>
             <input
               class="form__input"
               placeholder="Description"
               id="profile-description-input"
               type="text"
               name="description"
+              maxlength="200"
+              minlength="2"
+              required
             />
+            <span class="popup__error" id="profile-description-input-error"></span>
           </fieldset>
           <fieldset class="form__fieldset">
-            <button class="modal__button" type="submit">Save</button>
+            <button class="modal__button " type="submit" >Save</button>
           </fieldset>
         </form>
       </div>
@@ -88,17 +92,23 @@
               placeholder="title"
               type="text"
               name="title"
+              maxlength="30"
+              minlength="1"
+              required
             />
+            <span class="popup__error" id="form-input-title-error"></span>
             <input
               class="form__input"
               id="form-input-url"
               placeholder="Image URL"
               type="url"
               name="url"
+              required
             />
+            <span class="popup__error" id="form-input-url-error"></span>
           </fieldset>
           <fieldset class="form__fieldset">
-            <button class="modal__button" type="submit">Save</button>
+            <button class="modal__button popup__button_disabled" type="submit" disabled>Save</button>
           </fieldset>
         </form>
       </div>
