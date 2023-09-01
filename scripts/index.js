@@ -50,7 +50,7 @@ const cardTemplate =
 const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
-
+// const clickPopupRemove=
 //functions
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -103,11 +103,16 @@ function openPopup(modal) {
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
+// function closeRemovePopup(modal){
+//   modal.classList.remove("modal_opened");
+// }
+
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
 }
 //Event Listeners
+
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
