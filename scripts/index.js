@@ -50,7 +50,9 @@ const cardTemplate =
 const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
-// const clickPopupRemove=
+// const profileEditCloseOverlay=
+// const profileImageModalCloseOverlay= previewImageModal.querySelector(".modal__title");
+// const addCardModalCloseOverlay
 //functions
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
