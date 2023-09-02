@@ -34,7 +34,7 @@ function checkInputValidity(formElement, inputElement, options) {
 
 function hasInvalidInput(inputList) {
   return !inputList.every((inputElement) => inputElement.validity.valid);
-} 
+}
 
 
 function disableButton(submitButton, inactiveButtonClass) {
@@ -96,7 +96,7 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".form__input",
   submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "popup__button_disabled",
+  inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };

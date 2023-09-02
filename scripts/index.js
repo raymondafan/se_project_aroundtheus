@@ -112,10 +112,10 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 function escPopup(e) {
-  if (e.target.key === "Escape") {
-    closePopup(profileEditModal, addCardModal, previewImageModal);
+  if (e.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    if (modal) closePopup(modal);
   }
-  console.log(e);
 }
 
 //Event Listeners
@@ -137,12 +137,7 @@ previewImageModal.addEventListener("mousedown", (e) => {
     closePopup(previewImageModal);
   }
 });
-profileEditModal.addEventListener("keydown", escPopup);
-addCardModal.addEventListener("keydown", escPopup);
-previewImageModal.addEventListener("keydown", escPopup);
-// {
-//   closePopup(profileEditModal);
-// }
+document.addEventListener("keydown", escPopup);
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;

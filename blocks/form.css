@@ -15,7 +15,7 @@
   font-size: 14px;
   padding: 13px 2px;
 }
-.popup__error {
+.form__error {
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
@@ -24,7 +24,7 @@
 .popup__input_type_error {
   border-bottom: 1px solid #ff0000;
 }
-.popup__button_disabled {
+.modal__button_disabled {
   background: #f6f6f6;
   color: #000;
   border-radius: 2px;
