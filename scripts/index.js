@@ -113,7 +113,7 @@ function renderCard(cardData, wrapper) {
 }
 function escPopup(e) {
   if (e.target.key === "Escape") {
-    closePopup(profileEditModal,addCardModal,previewImageModal);
+    closePopup(profileEditModal, addCardModal, previewImageModal);
   }
   console.log(e);
 }
