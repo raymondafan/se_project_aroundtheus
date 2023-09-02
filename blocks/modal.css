@@ -91,6 +91,16 @@
   margin-top: 10px;
   font-size: 12px;
 }
+.modal__button_disabled {
+  background: #f6f6f6;
+  color: #000;
+  border-radius: 2px;
+  border: 1px solid #000;
+  opacity: 0.2;
+}
+.modal__input_type_error {
+  border-bottom: 1px solid #ff0000;
+}
 
 @media screen and (max-width: 650px) {
   .modal__heading {
