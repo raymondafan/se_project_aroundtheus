@@ -101,10 +101,12 @@ function handleAddCardFormSubmit(e) {
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", escPopup);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", escPopup);
 }
 
 function renderCard(cardData, wrapper) {
@@ -137,7 +139,6 @@ previewImageModal.addEventListener("mousedown", (e) => {
     closePopup(previewImageModal);
   }
 });
-document.addEventListener("keydown", escPopup);
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
