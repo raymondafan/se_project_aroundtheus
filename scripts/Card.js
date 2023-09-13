@@ -1,34 +1,53 @@
 export default class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
-    this._link= link;
-    this._cardSelector= cardSelector;
-
+    this._link = link;
+    this._cardSelector = cardSelector;
+    this._handleImageClick= handleImageClick;
   }
-  _setEventListeners(){
-this._cardElement.querySelector(".card__like-button").addEventListener("click", ()=>{
-  this._handleLikeIcon();
-})
-
-
-//".card__trash-button"
-const cardTrashButton= this._cardElement.querySelector(".card__trash-button")
-  }
-  _handleLikeIcon(){
+  _setEventListeners() {
     this._cardElement
-    .querySelector(".card__like-button")
-    .classList.toggle(".card__like-button_active");
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this._handleLikeIcon();
+      });
+      this.cardImageEl.addEventListener("click", () => {
+        this._handleImageClick();
+        // previewImage.src = cardData.link;
+        // previewImage.alt = `Photo of ${cardData.name}`;
+        // previewImageModalTitle.textContent = cardData.name;
+        // openPopup(previewImageModal);
+      });
+
+    //".card__trash-button"
+     this._cardElement
+      .querySelector(".card__trash-button")
+      .addEventListener("click", () => {
+        this._handleRemoveIcon();
+      });
   }
 
+  _handleLikeIcon() {
+    this._cardElement
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active");
+  }
+_handleRemoveIcon(){
+  this._cardElement.remove();
+  this._cardElement = null;
+}
   getView() {
     this._cardElement = document
-    .querySelector(this._cardSelector)
-    .content.querySelector(".card")
-    .cloneNode(true);
-console.log(this._cardElement);
-
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
+       this.cardImageEl = this._cardElement.querySelector(".card__image");
+      const cardTitleEl = this._cardElement.querySelector(".card__title");
+this.cardImageEl.src=this._link
+cardTitleEl.textContent= this._name
     //get the card view
     this._setEventListeners();
     // return card
+    return this._cardElement
   }
 }

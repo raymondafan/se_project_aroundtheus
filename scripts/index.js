@@ -59,40 +59,39 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
-// const profileEditCloseOverlay=
-// const profileImageModalCloseOverlay= previewImageModal.querySelector(".modal__title");
-// const addCardModalCloseOverlay
+
 //functions
 function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const cardTrashButton = cardElement.querySelector(".card__trash-button");
+  // const cardElement = cardTemplate.cloneNode(true);
+  // const cardImageEl = cardElement.querySelector(".card__image");
+  // const cardTitleEl = cardElement.querySelector(".card__title");
+  // const likeButton = cardElement.querySelector(".card__like-button");
+  // const cardTrashButton = cardElement.querySelector(".card__trash-button");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-  cardTrashButton.addEventListener("click", () => {
-    cardElement.remove("card");
-  });
-  cardImageEl.addEventListener("click", () => {
-    previewImage.src = cardData.link;
-    previewImage.alt = `Photo of ${cardData.name}`;
-    previewImageModalTitle.textContent = cardData.name;
-    openPopup(previewImageModal);
-  });
+  // likeButton.addEventListener("click", handleLikeIcon);
+  // cardTrashButton.addEventListener("click", handleRemoveIcon);
+  // cardImageEl.addEventListener("click", () => {
+  //   previewImage.src = cardData.link;
+  //   previewImage.alt = `Photo of ${cardData.name}`;
+  //   previewImageModalTitle.textContent = cardData.name;
+  //   openPopup(previewImageModal);
+  // });
 
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
+  // cardImageEl.src = cardData.link;
+  // cardImageEl.alt = cardData.name;
 
-  cardTitleEl.textContent = cardData.name;
+  // cardTitleEl.textContent = cardData.name;
 
-  return cardElement;
+  // return cardElement;
 }
 
-//Event Handlers
-
+//Event Handlersl
+// const handleLikeIcon = (e)=>{
+//   e.target.classList.toggle("card__like-button_active");
+// };
+// const handleRemoveIcon = (e)=>{
+//   e.target.closest(".card").remove();
+// };
 function handlerProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -117,10 +116,17 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", escPopup);
 }
-
+function handleImageClick(){
+  previewImage.src = cardData.link;
+  previewImage.alt = `Photo of ${cardData.name}`;
+    previewImageModalTitle.textContent = cardData.name;
+ openPopup(previewImageModal);
+}
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+  const card= new Card(cardData, "#card-template", handleImageClick);
+
+  // const cardElement = getCardElement(cardData);
+  wrapper.prepend(card.getView());
 }
 function escPopup(e) {
   if (e.key === "Escape") {
