@@ -26,6 +26,10 @@ import FormValidator from "./FormValidator.js";
 //   errorMessageElement.classList.remove(errorClass);
 // }
 
+
+const a = new FormValidator(/* ???? */);
+console.log(a);
+
 function checkInputValidity(formElement, inputElement, options) {
   if (!inputElement.validity.valid) {
     return showInputError(formElement, inputElement, options);

@@ -59,7 +59,6 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
-
 //functions
 // function getCardElement(cardData) {
   // const cardElement = cardTemplate.cloneNode(true);
@@ -116,18 +115,22 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", escPopup);
 }
-function handleImageClick(){
-  previewImage.src = cardData.link;
-  previewImage.alt = `Photo of ${cardData.name}`;
-    previewImageModalTitle.textContent = cardData.name;
- openPopup(previewImageModal);
+
+function handleImageClick(data){
+  previewImage.src = data.link;
+  previewImage.alt = `Photo of ${data.name}`;
+  previewImageModalTitle.textContent = data.name;
+
+  openPopup(previewImageModal);
 }
+
 function renderCard(cardData, wrapper) {
   const card= new Card(cardData, "#card-template", handleImageClick);
 
   // const cardElement = getCardElement(cardData);
   wrapper.prepend(card.getView());
 }
+
 function escPopup(e) {
   if (e.key === "Escape") {
     const modal = document.querySelector(".modal_opened");

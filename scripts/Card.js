@@ -12,11 +12,10 @@ export default class Card {
         this._handleLikeIcon();
       });
       this.cardImageEl.addEventListener("click", () => {
-        this._handleImageClick();
-        // previewImage.src = cardData.link;
-        // previewImage.alt = `Photo of ${cardData.name}`;
-        // previewImageModalTitle.textContent = cardData.name;
-        // openPopup(previewImageModal);
+        this._handleImageClick({
+          name: this._name,
+          link: this._link,
+        });
       });
 
     //".card__trash-button"
