@@ -42,9 +42,9 @@ _handleRemoveIcon(){
       .content.querySelector(".card")
       .cloneNode(true);
        this.cardImageEl = this._cardElement.querySelector(".card__image");
-      const cardTitleEl = this._cardElement.querySelector(".card__title");
+     this.cardTitleEl = this._cardElement.querySelector(".card__title");
 this.cardImageEl.src=this._link
-cardTitleEl.textContent= this._name
+this.cardTitleEl.textContent= this._name
     //get the card view
     this._setEventListeners();
     // return card

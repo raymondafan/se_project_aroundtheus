@@ -1,29 +1,30 @@
+import FormValidator from "./FormValidator.js";
 // enabling validation by calling enableValidation()
 // pass all the settings on call
-function showInputError(
-  formElement,
-  inputElement,
-  { inputErrorClass, errorClass }
-) {
-  const errorMessageElement = formElement.querySelector(
-    `#${inputElement.id}-error`
-  );
-  inputElement.classList.add(inputErrorClass);
-  errorMessageElement.textContent = inputElement.validationMessage;
-  errorMessageElement.classList.add(errorClass);
-}
-function hideInputError(
-  formElement,
-  inputElement,
-  { inputErrorClass, errorClass }
-) {
-  const errorMessageElement = formElement.querySelector(
-    `#${inputElement.id}-error`
-  );
-  inputElement.classList.remove(inputErrorClass);
-  errorMessageElement.textContent = "";
-  errorMessageElement.classList.remove(errorClass);
-}
+// function showInputError(
+//   formElement,
+//   inputElement,
+//   { inputErrorClass, errorClass }
+// ) {
+//   const errorMessageElement = formElement.querySelector(
+//     `#${inputElement.id}-error`
+//   );
+//   inputElement.classList.add(inputErrorClass);
+//   errorMessageElement.textContent = inputElement.validationMessage;
+//   errorMessageElement.classList.add(errorClass);
+// }
+// function hideInputError(
+//   formElement,
+//   inputElement,
+//   { inputErrorClass, errorClass }
+// ) {
+//   const errorMessageElement = formElement.querySelector(
+//     `#${inputElement.id}-error`
+//   );
+//   inputElement.classList.remove(inputErrorClass);
+//   errorMessageElement.textContent = "";
+//   errorMessageElement.classList.remove(errorClass);
+// }
 
 function checkInputValidity(formElement, inputElement, options) {
   if (!inputElement.validity.valid) {

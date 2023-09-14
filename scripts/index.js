@@ -61,7 +61,7 @@ const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
 
 //functions
-function getCardElement(cardData) {
+// function getCardElement(cardData) {
   // const cardElement = cardTemplate.cloneNode(true);
   // const cardImageEl = cardElement.querySelector(".card__image");
   // const cardTitleEl = cardElement.querySelector(".card__title");
@@ -83,7 +83,7 @@ function getCardElement(cardData) {
   // cardTitleEl.textContent = cardData.name;
 
   // return cardElement;
-}
+// }
 
 //Event Handlersl
 // const handleLikeIcon = (e)=>{
