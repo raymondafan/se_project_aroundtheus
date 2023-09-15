@@ -1,10 +1,9 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handleImageClick, handlePreviewImage) { //cardSelector= #card-template
+  constructor({ name, link }, cardSelector, handleImageClick) { //cardSelector= #card-template
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector; //template
     this._handleImageClick= handleImageClick;
-    this._handlePreviewImage= handlePreviewImage;
   }
   _setEventListeners() {
     this._cardElement
@@ -25,11 +24,7 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleRemoveCard();
       });
-      this._cardElement
-      .querySelector(".modal")
-      .addEventListener("mousedown", () => {
-       this._handlePreviewImage();
-      });
+      
   }
 
   _handleLikeIcon() {
@@ -41,11 +36,7 @@ _handleRemoveCard(){
   this._cardElement.remove();
   this._cardElement = null;
 }
-_handlePreviewImage(){
-  if (this._cardElement.classList.contains("modal")) {
-    closePopup("#preview-image-modal");
-  }
-}
+
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)

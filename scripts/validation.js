@@ -1,4 +1,4 @@
-import FormValidator from "./FormValidator.js";
+
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 // function showInputError(
@@ -27,19 +27,19 @@ import FormValidator from "./FormValidator.js";
 // }
 
 
-const a = new FormValidator(/* ???? */);
-console.log(a);
 
-function checkInputValidity(formElement, inputElement, options) {
-  if (!inputElement.validity.valid) {
-    return showInputError(formElement, inputElement, options);
-  }
-  hideInputError(formElement, inputElement, options);
-}
 
-function hasInvalidInput(inputList) {
-  return !inputList.every((inputElement) => inputElement.validity.valid);
-}
+
+// function checkInputValidity(formElement, inputElement, options) {
+//   if (!inputElement.validity.valid) {
+//     return showInputError(formElement, inputElement, options);
+//   }
+//   hideInputError(formElement, inputElement, options);
+// }
+
+// function hasInvalidInput(inputList) {
+//   return !inputList.every((inputElement) => inputElement.validity.valid);
+// }
 
 
 function disableButton(submitButton, inactiveButtonClass) {
@@ -97,13 +97,6 @@ function enableValidation(options) {
   });
 }
 
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "popup__error_visible",
-};
+
 
 enableValidation(config);

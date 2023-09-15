@@ -1,5 +1,5 @@
 import Card from "./Card.js";
-
+import FormValidator from "./FormValidator.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -27,13 +27,7 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
- const card= new Card(cardData, "#card-template")
 
-card.getView();
 
 //Elements
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -182,3 +176,14 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "popup__error_visible",
+};
+const addCardForm= document.querySelector("#add-card-form");
+const addCardValidator = new FormValidator(config, addCardForm);
+addCardValidator.enableValidation();
