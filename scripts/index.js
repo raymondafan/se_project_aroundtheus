@@ -32,7 +32,9 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
  const card= new Card(cardData, "#card-template")
+
 card.getView();
+
 //Elements
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");

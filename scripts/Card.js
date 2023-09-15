@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handleImageClick) {
+  constructor({ name, link }, cardSelector, handleImageClick, handlePreviewImage) { //cardSelector= #card-template
     this._name = name;
     this._link = link;
-    this._cardSelector = cardSelector;
+    this._cardSelector = cardSelector; //template
     this._handleImageClick= handleImageClick;
+    this._handlePreviewImage= handlePreviewImage;
   }
   _setEventListeners() {
     this._cardElement
@@ -22,7 +23,12 @@ export default class Card {
      this._cardElement
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
-        this._handleRemoveIcon();
+        this._handleRemoveCard();
+      });
+      this._cardElement
+      .querySelector(".modal")
+      .addEventListener("mousedown", () => {
+       this._handlePreviewImage();
       });
   }
 
@@ -31,9 +37,14 @@ export default class Card {
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
-_handleRemoveIcon(){
+_handleRemoveCard(){
   this._cardElement.remove();
   this._cardElement = null;
+}
+_handlePreviewImage(){
+  if (this._cardElement.classList.contains("modal")) {
+    closePopup("#preview-image-modal");
+  }
 }
   getView() {
     this._cardElement = document

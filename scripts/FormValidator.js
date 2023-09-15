@@ -30,7 +30,7 @@ export default class FormValidator{
 
   };
   _setEventListeners(){
-
+//data w in keyboard "keydown""keyup" etc
   };
   enableValidation(){ //plays roll of init method(public)
 
