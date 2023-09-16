@@ -29,18 +29,32 @@ export default class FormValidator{
   _hasInvalidInput(inputList){
     return !inputList.every((inputElement) => inputElement.validity.valid);
   };
-  _setEventListeners(){
+  _toggleButtonState(
+    inputElements,
+    submitButton,
+    { inactiveButtonClass }
+  ) {
+    if (hasInvalidInput(this._inputElements)) {
+      disableButton(submitButton, this._inactiveButtonClass);
+      return;
+    }
+       enableButton(submitButton, this._inactiveButtonClass);
+
+
+
+  }
+  _setEventListeners(inputElements){
 //data w in keyboard "keydown""keyup" etc
-const { inputSelector, submitButtonSelector} = options;
-  const inputElements = [...formElement.querySelectorAll(inputSelector)];
-  const submitButton = formElement.querySelector(submitButtonSelector);
+  this._inputElements = [...this._element.querySelectorAll(this._inputSelector)];
+  this._submitButton = this._element.querySelector(this._submitButtonSelector);
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
-      checkInputValidity(formElement, inputElement, options);
-      toggleButtonState(inputElements, submitButton, options);
+      _checkInputValidity(formElement, inputElement, options);
+      _toggleButtonState(inputElements, submitButton, options);
     });
   });
   };
+
   enableValidation(){ //plays roll of init method(public)
     this._element.addEventListener("submit", (e) => {
       e.preventDefault();
