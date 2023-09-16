@@ -5,6 +5,8 @@ export default class FormValidator{
     this._inactiveButtonClass= config.inactiveButtonClass;
     this._inputErrorClass= config.inputErrorClass;
     this._errorClass= config.errorClass;
+    this._inputElements = [...this._element.querySelectorAll(this._inputSelector)];
+  this._submitButton = this._element.querySelector(this._submitButtonSelector);
     this._element=formElement;
 
   }
@@ -29,24 +31,18 @@ export default class FormValidator{
   _hasInvalidInput(inputList){
     return !inputList.every((inputElement) => inputElement.validity.valid);
   };
-  _toggleButtonState(
-    inputElements,
-    submitButton,
-    { inactiveButtonClass }
-  ) {
-    if (hasInvalidInput(this._inputElements)) {
-      disableButton(submitButton, this._inactiveButtonClass);
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputElements)) {
+      disableButton(this._submitButton, this._inactiveButtonClass);
       return;
     }
-       enableButton(submitButton, this._inactiveButtonClass);
+       enableButton(this._submitButton, this._inactiveButtonClass);
 
 
 
   }
   _setEventListeners(inputElements){
 //data w in keyboard "keydown""keyup" etc
-  this._inputElements = [...this._element.querySelectorAll(this._inputSelector)];
-  this._submitButton = this._element.querySelector(this._submitButtonSelector);
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
       _checkInputValidity(formElement, inputElement, options);
@@ -59,7 +55,7 @@ export default class FormValidator{
     this._element.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-    setEventListeners(formElement, options);
+    setEventListeners();
   };
 };
 
