@@ -185,5 +185,6 @@ const config = {
   errorClass: "popup__error_visible",
 };
 const addCardForm= document.querySelector("#add-card-form");
+
 const addCardValidator = new FormValidator(config, addCardForm);
 addCardValidator.enableValidation();
