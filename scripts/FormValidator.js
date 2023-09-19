@@ -11,12 +11,12 @@ export default class FormValidator {
     this._submitButton = formElement.querySelector(this._submitButtonSelector);
     this._element = formElement;
   }
-  _showInputError(inputElement, errorMessage) {
+  _showInputError(inputElement) {
     const errorElement = this._element.querySelector(
       `#${inputElement.id}-error`
     );
     inputElement.classList.add(this._inputErrorClass);
-    errorElement.textContent = errorMessage;
+    errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._errorClass);
   }
   _hideInputError(inputElement) {
@@ -43,6 +43,7 @@ export default class FormValidator {
     if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.disabled = true;
+      return;
     }
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
