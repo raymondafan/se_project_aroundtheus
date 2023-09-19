@@ -184,7 +184,7 @@ const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "popup__error_visible",
 };
-const addCardForm= document.querySelector("#add-card-form");
+// const addCardForm= document.querySelector("#add-card-form");
 
-const addCardValidator = new FormValidator(config, addCardForm);
+const addCardValidator = new FormValidator(config,  addCardFormElement);
 addCardValidator.enableValidation();
