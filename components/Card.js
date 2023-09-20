@@ -36,7 +36,9 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
-
+  _getElement() {
+    this._element = this._getElement();
+  }
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
@@ -45,6 +47,7 @@ export default class Card {
     this.cardImageEl = this._cardElement.querySelector(".card__image");
     this.cardTitleEl = this._cardElement.querySelector(".card__title");
     this.cardImageEl.src = this._link;
+    this.cardImageEl.alt = `Photo of ${this._name}`;
     this.cardTitleEl.textContent = this._name;
     //get the card view
     this._setEventListeners();

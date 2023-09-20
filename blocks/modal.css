@@ -73,7 +73,7 @@
   font-size: 18px;
   transition: 0.25s ease-in-out;
 }
-.modal__button:hover {
+.modal__button:hover:not(:disabled) {
   opacity: 80%;
 }
 .modal__image {
@@ -97,6 +97,7 @@
   border-radius: 2px;
   border: 1px solid #000;
   opacity: 0.2;
+  cursor: default;
 }
 .modal__input_type_error {
   border-bottom: 1px solid #ff0000;
