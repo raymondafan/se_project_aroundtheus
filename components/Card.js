@@ -37,9 +37,13 @@ export default class Card {
     this._cardElement = null;
   }
   _getElement() {
-    this._element = this._getElement();
+    return document
+    .querySelector(this._cardSelector)
+    .content.querySelector(".card")
+    .cloneNode(true);
   }
   getView() {
+    this._cardElement= this._getElement();
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
