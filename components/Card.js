@@ -38,12 +38,12 @@ export default class Card {
   }
   _getElement() {
     return document
-    .querySelector(this._cardSelector)
-    .content.querySelector(".card")
-    .cloneNode(true);
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
   }
   getView() {
-    this._cardElement= this._getElement();
+    this._cardElement = this._getElement();
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
