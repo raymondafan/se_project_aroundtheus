@@ -16,9 +16,9 @@ export default class Popup {
      this.close();
     }
   }
-  closeButton(){
+  // closeModalClick(){
 
-  }
+  // }
   setEventListeners(){
 // sets event listeners
 // profileEditForm.addEventListener("submit", handlerProfileEditSubmit);
