@@ -1,6 +1,9 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -192,3 +195,8 @@ addEditProfileValidator.enableValidation();
 const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
 newCardPopup.open();
 newCardPopup.close();
+const CardSection= new Section({
+  renderer: (item)=>{
+
+  },
+});

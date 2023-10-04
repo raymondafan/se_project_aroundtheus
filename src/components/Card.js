@@ -38,7 +38,7 @@ export default class Card {
   }
   _getElement() {
     return document
-      .querySelector(this._cardSelector)
+      .querySelector(this._cardSelector) 
       .content.querySelector(".card")
       .cloneNode(true);
   }
