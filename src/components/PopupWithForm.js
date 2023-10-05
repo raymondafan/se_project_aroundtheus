@@ -9,6 +9,13 @@ export default class PopupWithForm extends Popup {
     this._popupForm.reset();
     super.close();
   }
+  handleFormSubmit() {
+    e.preventDefault();
+    this.name = cardTitleInput.value;
+    this.link = cardUrlInput.value;
+
+    this.close();
+  }
 }
 
 //index.js

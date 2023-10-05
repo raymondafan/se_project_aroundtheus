@@ -57,6 +57,7 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
+
 //functions
 // function getCardElement(cardData) {
 // const cardElement = cardTemplate.cloneNode(true);
@@ -192,7 +193,7 @@ const addCardValidator = new FormValidator(config, addCardFormElement);
 const addEditProfileValidator = new FormValidator(config, profileEditForm);
 addCardValidator.enableValidation();
 addEditProfileValidator.enableValidation();
-const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
+const newCardPopup = new PopupWithForm("#add-card-modal", handleAddCardFormSubmit);
 newCardPopup.open();
 newCardPopup.close();
 const CardSection= new Section({
