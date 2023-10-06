@@ -9,12 +9,23 @@ export default class PopupWithForm extends Popup {
     this._popupForm.reset();
     super.close();
   }
-  _handleFormSubmit= (e)=> {
-    e.preventDefault();
-    this.name = cardTitleInput.value;
-    this.link = cardUrlInput.value;
 
-    this.close();
+  _getInputValues() {
+    const inputs = this._popupForm.querySelectorAll(".form__input");
+    const inputValues = {};
+
+    inputs.forEach((input) => {
+      inputValues[input.name] = input.value;
+    });
+    return inputValues;
+  }
+
+  setEventListeners() {
+    this._popupForm.addEventListener("submit", (e) => {
+      this._handleFormSubmit(this._getInputValues());
+    });
+
+    super.setEventListeners();
   }
 }
 

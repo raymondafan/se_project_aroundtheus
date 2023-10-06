@@ -96,11 +96,12 @@ function handlerProfileEditSubmit(e) {
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileEditModal);
 }
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link }, cardListEl);
+function handleAddCardFormSubmit(inputValues) {
+  console.log(inputValues)
+    // { title: '', link: ''}
+  //const name = cardTitleInput.value;
+  //const link = cardUrlInput.value;
+  renderCard(inputValues, cardListEl);
   addCardFormElement.reset();
 
   closePopup(addCardModal);
@@ -167,8 +168,8 @@ previewImageModalCloseButton.addEventListener("click", () => {
   closePopup(previewImageModal);
 });
 //form listeners
-profileEditForm.addEventListener("submit", handlerProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+// profileEditForm.addEventListener("submit", handlerProfileEditSubmit);
+// addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 //new cards
 addNewCardButton.addEventListener("click", () => {
   addCardValidator.toggleButtonState();
@@ -194,8 +195,11 @@ const addEditProfileValidator = new FormValidator(config, profileEditForm);
 addCardValidator.enableValidation();
 addEditProfileValidator.enableValidation();
 const newCardPopup = new PopupWithForm("#add-card-modal", handleAddCardFormSubmit);
-newCardPopup.open();
-newCardPopup.close();
+const EditCardPopup= new PopupWithForm("#add-card-modal", handlerProfileEditSubmit);
+//newCardPopup.open();
+//newCardPopup.close();
+newCardPopup.setEventListeners();
+EditCardPopup.setEventListeners();
 const CardSection= new Section({
   renderer: (item)=>{
 
