@@ -1,6 +1,6 @@
 import "../pages/index.css";
 //import all the classes
-import {initialCards, selectors} from "../components.constants.js";
+import {initialCards, selectors} from "../components/constants.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
