@@ -25,6 +25,6 @@ export const initialCards = [
   },
 ];
 export const selectors = {
-  cardSection: ".cards__list",
+  cardSection: "cards__list",
   cardTemplate: "#card-template",
 };
