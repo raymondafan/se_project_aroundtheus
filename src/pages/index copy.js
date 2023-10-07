@@ -153,19 +153,6 @@ addNewCardButton.addEventListener("click", () => {
 addCardModalCloseButton.addEventListener("click", () =>
   closePopup(addCardModal)
 );
-const addCardValidator = new FormValidator(config, addCardFormElement);
-const addEditProfileValidator = new FormValidator(config, profileEditForm);
-addCardValidator.enableValidation();
-addEditProfileValidator.enableValidation();
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
 
 // const addCardForm= document.querySelector("#add-card-form");
 
