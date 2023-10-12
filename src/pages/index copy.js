@@ -153,6 +153,9 @@ addNewCardButton.addEventListener("click", () => {
 addCardModalCloseButton.addEventListener("click", () =>
   closePopup(addCardModal)
 );
+
+// const addCardForm= document.querySelector("#add-card-form");
+
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".form__input",
@@ -172,8 +175,5 @@ const EditCardPopup= new PopupWithForm("#add-card-modal", handlerProfileEditSubm
 //newCardPopup.close();
 newCardPopup.setEventListeners();
 EditCardPopup.setEventListeners();
-// const addCardForm= document.querySelector("#add-card-form");
-
-
 
 // const CardSection = new Section({data:items});

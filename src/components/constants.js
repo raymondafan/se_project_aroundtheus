@@ -24,8 +24,9 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
 export const selectors = {
-  cardSection: "cards__list",
+  cardSection: ".cards__list",
   cardTemplate: "#card-template",
-  PreviewModal: "modal__preview"
+  previewModal: ".modal__preview"
 };
