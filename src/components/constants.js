@@ -28,5 +28,5 @@ export const initialCards = [
 export const selectors = {
   cardSection: ".cards__list",
   cardTemplate: "#card-template",
-  previewModal: ".modal__preview"
+  previewModal: "#preview-image-modal"
 };
