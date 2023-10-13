@@ -3,7 +3,7 @@ import "../pages/index.css";
 //import all the classes
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
-import { initialCards, selectors } from "../components/constants.js";
+import { initialCards, selectors, config } from "../components/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -67,10 +67,8 @@ const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 // const handleRemoveIcon = (e)=>{
 //   e.target.closest(".card").remove();
 // };
-function handlerProfileEditSubmit(inputValues) {
-
-  // profileTitle.textContent = profileTitleInput.value;
-  // profileDescription.textContent = profileDescriptionInput.value;
+function handlerProfileEditSubmit({ name, job }) {
+  userInfo.setUserInfo(name, job)
   closePopup(profileEditModal);
 }
 function handleAddCardFormSubmit(inputValues) {
@@ -161,15 +159,6 @@ addCardModalCloseButton.addEventListener("click", () =>
 
 // const addCardForm= document.querySelector("#add-card-form");
 
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
 const addCardValidator = new FormValidator(config, addCardFormElement);
 const addEditProfileValidator = new FormValidator(config, profileEditForm);
 addCardValidator.enableValidation();
@@ -178,16 +167,13 @@ const newCardPopup = new PopupWithForm(
   "#add-card-modal",
   handleAddCardFormSubmit
 );
-const EditCardPopup = new PopupWithForm(
+const editCardPopup = new PopupWithForm(
   "#profile-edit-modal",
   handlerProfileEditSubmit
 );
-//newCardPopup.open();
-//newCardPopup.close();
-newCardPopup.setEventListeners();
-EditCardPopup.setEventListeners();
 
-// const CardSection = new Section({data:items});
+newCardPopup.setEventListeners();
+editCardPopup.setEventListeners();
 
 const CardPreviewModal = new PopupWithImage(selectors.previewModal);
 CardPreviewModal.setEventListeners();
@@ -217,7 +203,4 @@ const cardList = new Section(
 );
 cardList.renderItems(initialCards);
 
-const userInfo= new UserInfo(profileTitle, profileDescription);
-userInfo.setUserInfo("ray","swe");
-const data= userInfo.getUserInfo()
-console.log(data);
+const userInfo = new UserInfo(profileTitle, profileDescription);
