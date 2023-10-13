@@ -7,6 +7,7 @@ import { initialCards, selectors } from "../components/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 //Elements
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -66,10 +67,10 @@ const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 // const handleRemoveIcon = (e)=>{
 //   e.target.closest(".card").remove();
 // };
-function handlerProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+function handlerProfileEditSubmit(inputValues) {
+
+  // profileTitle.textContent = profileTitleInput.value;
+  // profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileEditModal);
 }
 function handleAddCardFormSubmit(inputValues) {
@@ -77,14 +78,14 @@ function handleAddCardFormSubmit(inputValues) {
   // { title: '', link: ''}
   //const name = cardTitleInput.value;
   //const link = cardUrlInput.value;
-  renderCard(inputValues, cardListEl);
-  addCardFormElement.reset();
 
-  closePopup(addCardModal);
   //call createCard with the right parameters
   //add card to DOM with cardList.addItems()
-  createCard();
-  cardList.addItems();
+  const card=   (inputValues);
+  cardList.addItem(card);
+
+  addCardFormElement.reset();
+  closePopup(addCardModal);
 }
 
 function openPopup(modal) {
@@ -178,7 +179,7 @@ const newCardPopup = new PopupWithForm(
   handleAddCardFormSubmit
 );
 const EditCardPopup = new PopupWithForm(
-  "#add-card-modal",
+  "#profile-edit-modal",
   handlerProfileEditSubmit
 );
 //newCardPopup.open();
@@ -209,9 +210,14 @@ const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      cardList.addItems(createCard(item));
+      cardList.addItem(createCard(item));
     },
   },
   selectors.cardSection
 );
 cardList.renderItems(initialCards);
+
+const userInfo= new UserInfo(profileTitle, profileDescription);
+userInfo.setUserInfo("ray","swe");
+const data= userInfo.getUserInfo()
+console.log(data);
