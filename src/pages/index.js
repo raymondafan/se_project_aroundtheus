@@ -68,7 +68,7 @@ const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 //   e.target.closest(".card").remove();
 // };
 function handlerProfileEditSubmit({ name, job }) {
-  userInfo.setUserInfo(name, job)
+  userInfo.setUserInfo(name, job);
   closePopup(profileEditModal);
 }
 function handleAddCardFormSubmit(inputValues) {
@@ -79,7 +79,7 @@ function handleAddCardFormSubmit(inputValues) {
 
   //call createCard with the right parameters
   //add card to DOM with cardList.addItems()
-  const card=   (inputValues);
+  const card = inputValues;
   cardList.addItem(card);
 
   addCardFormElement.reset();
