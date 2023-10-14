@@ -76,14 +76,13 @@ function handleAddCardFormSubmit(inputValues) {
   // { title: '', link: ''}
   //const name = cardTitleInput.value;
   //const link = cardUrlInput.value;
-
   //call createCard with the right parameters
   //add card to DOM with cardList.addItems()
   const card = inputValues;
   cardList.addItem(card);
-
   addCardFormElement.reset();
   closePopup(addCardModal);
+  userInfo.getUserInfo();
 }
 
 function openPopup(modal) {
@@ -204,3 +203,5 @@ const cardList = new Section(
 cardList.renderItems(initialCards);
 
 const userInfo = new UserInfo(profileTitle, profileDescription);
+
+
