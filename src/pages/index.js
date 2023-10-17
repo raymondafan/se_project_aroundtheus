@@ -55,7 +55,6 @@ function handleImageClick(data) {
 
 //new instances
 
-
 //form validation instance
 const addCardValidator = new FormValidator(config, addCardFormElement);
 const addEditProfileValidator = new FormValidator(config, profileEditForm);
