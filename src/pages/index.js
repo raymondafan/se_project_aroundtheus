@@ -78,7 +78,7 @@ function handleAddCardFormSubmit(inputValues) {
   //const link = cardUrlInput.value;
   //call createCard with the right parameters
   //add card to DOM with cardList.addItems()
-  const card = inputValues;
+  const card = createCard(inputValues);
   cardList.addItem(card);
   addCardFormElement.reset();
   closePopup(addCardModal);
@@ -102,12 +102,12 @@ function handleImageClick(data) {
   openPopup(previewImageModal);
 }
 
-function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+// function renderCard(cardData, wrapper) {
+//   const card = new Card(cardData, "#card-template", handleImageClick);
 
-  // const cardElement = getCardElement(cardData);
-  wrapper.prepend(card.getView());
-}
+//   // const cardElement = getCardElement(cardData);
+//   wrapper.prepend(card.getView());
+// }
 
 function escPopup(e) {
   if (e.key === "Escape") {
@@ -180,14 +180,15 @@ CardPreviewModal.setEventListeners();
 const createCard = (data) => {
   const cardEl = new Card(
     {
-      data,
+      name: data.name,
+      link: data.link,
       handleImageClick: (imgData) => {
-        debugger;
         CardPreviewModal.open(imgData);
       },
     },
     selectors.cardTemplate
   );
+
   return cardEl.getView();
 };
 
@@ -203,5 +204,3 @@ const cardList = new Section(
 cardList.renderItems(initialCards);
 
 const userInfo = new UserInfo(profileTitle, profileDescription);
-
-
