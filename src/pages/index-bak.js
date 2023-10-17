@@ -14,7 +14,7 @@ const createCard =  (data) => {
         {
           data,
           handleImageClick: (imgData) => {
-            CardPreviewModal.open(imgData);
+            cardPreviewModal.open(imgData);
           },
         },
         selectors.cardTemplate
@@ -34,7 +34,7 @@ const cardList = new Section(
 cardList.renderItems(initialCards);
 // initialize all my instances
 
-const CardPreviewModal = new PopupWithImage(selectors.previewModal);
-CardPreviewModal.setEventListeners();
+const cardPreviewModal = new PopupWithImage(selectors.previewModal);
+cardPreviewModal.setEventListeners();
 
 // all the rest
