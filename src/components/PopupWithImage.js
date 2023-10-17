@@ -1,7 +1,7 @@
 import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
-    super({popupSelector});
+    super({ popupSelector });
     this._imageElement = this._popupElement.querySelector(".modal__image");
     this._titleElement = this._popupElement.querySelector(".modal__title");
   }
@@ -11,9 +11,8 @@ export default class PopupWithImage extends Popup {
     this._titleElement.textContent = data.text;
     super.open();
   }
-  
-  setEventListeners() {
 
+  setEventListeners() {
     super.setEventListeners();
   }
 }
