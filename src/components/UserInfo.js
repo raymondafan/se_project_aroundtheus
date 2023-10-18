@@ -4,6 +4,7 @@ export default class UserInfo {
     this._job = job;
   }
 
+
   getUserInfo() {
     return {
       name: this._name.textContent,
