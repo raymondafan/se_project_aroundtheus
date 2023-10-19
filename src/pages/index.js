@@ -80,7 +80,10 @@ const editCardPopup = new PopupWithForm(
 editCardPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
-  userInfo.getUserInfo(editCardPopup.open());
+  const userData = userInfo.getUserInfo();
+  userInfo.value = userData.name;
+  userInfo.value = userData.job;
+  editCardPopup.open();
 });
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
