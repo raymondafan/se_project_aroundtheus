@@ -22,10 +22,10 @@ const addCardModal = document.querySelector("#add-card-modal");
 //   previewImageModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-// const profileTitleInput = document.querySelector("#profile-title-input");
-// const profileDescriptionInput = document.querySelector(
-//   "#profile-description-input"
-// );
+const profileTitleInput = document.querySelector("#profile-title-input");
+const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
 // const cardListEl = document.querySelector(".cards__list");
@@ -81,10 +81,11 @@ editCardPopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  userInfo.value = userData.name;
-  userInfo.value = userData.job;
+  profileTitleInput.value= userData.name;
+  profileDescriptionInput.value= userData.job;
   editCardPopup.open();
 });
+
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
 cardPreviewModal.setEventListeners();
