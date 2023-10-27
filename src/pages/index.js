@@ -117,3 +117,37 @@ const cardList = new Section(
 cardList.renderItems(initialCards);
 //userinfo instance
 const userInfo = new UserInfo(profileTitle, profileDescription);
+
+fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+  headers: {
+    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+    "Content-Type": "application/json"
+  }
+})
+  .then(res => res.json())
+  .then((result) => {
+    console.log(result);
+  });
+
+  fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+  headers: {
+    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+    "Content-Type": "application/json"
+  }
+})
+  .then(res => res.json())
+  .then((result) => {
+    console.log(result);
+  });
+
+  fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+  method: "POST",
+  headers: {
+    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: "Marie Skłodowska Curie",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg"
+  })
+});
