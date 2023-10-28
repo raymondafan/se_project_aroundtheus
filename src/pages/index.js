@@ -134,20 +134,11 @@ fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
 
 
 
-// fetch("https://around-api.en.tripleten-services.com/v1/users/me/avatar", {
-//   method: "PATCH",
-//   headers: {
-//     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-//     "Content-Type": "application/json"
-//   },
-//   body: JSON.stringify({
-//     name: "Marie Skłodowska Curie",
-//     link: "Physicist and Chemist"
-//   })
-// });
+
 
 
 const api = new Api ({});
+api.userAvatar();
 api.usersInfo();
 api.addCard();
 api.getCard();
