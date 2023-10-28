@@ -8,6 +8,7 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/api.js";
 
 //Elements
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -129,25 +130,24 @@ fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
     console.log(result);
   });
 
-  fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  headers: {
-    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-    "Content-Type": "application/json"
-  }
-})
-  .then(res => res.json())
-  .then((result) => {
-    console.log(result);
-  });
 
-  fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  method: "POST",
-  headers: {
-    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    name: "Marie Skłodowska Curie",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg"
-  })
-});
+
+
+
+// fetch("https://around-api.en.tripleten-services.com/v1/users/me/avatar", {
+//   method: "PATCH",
+//   headers: {
+//     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+//     "Content-Type": "application/json"
+//   },
+//   body: JSON.stringify({
+//     name: "Marie Skłodowska Curie",
+//     link: "Physicist and Chemist"
+//   })
+// });
+
+
+const api = new Api ({});
+api.usersInfo();
+api.addCard();
+api.getCard();
