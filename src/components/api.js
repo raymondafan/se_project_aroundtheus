@@ -2,11 +2,31 @@ export default class Api {
   constructor() {
     // stuff
   }
+  getInitialCards() {
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards",{
+      headers: {
+        authorization: "7df31549-2772-46fa-8dab-555ea4e32993"
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      });
+  }
+
+ _handleErrorResponse(){
+    if (res.ok) {
+      return res.json();
+    }
+    // if the server returns an error, reject the promise
+    return Promise.reject(`Error: ${res.status}`);
+ }
 
   addCard(inputValues) {
     // the inputValues is passed from index.js and you put these in the body of your fetch request
     // put your fetch request here
-    fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
   method: "POST",
   headers: {
     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
@@ -18,21 +38,8 @@ export default class Api {
   })
 });
   }
-  getCard(){
-    fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-      method: "GET",
-    headers: {
-      authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-      "Content-Type": "application/json"
-    }
-  })
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result);
-    });
-  }
   usersInfo(){
-    fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
   method: "PATCH",
   headers: {
     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
@@ -44,8 +51,11 @@ export default class Api {
   })
 });
   }
+  profileInfo(){
+
+  }
   userAvatar(){
-    fetch("https://around-api.en.tripleten-services.com/v1/users/me/avatar", {
+    return fetch("https://around-api.en.tripleten-services.com/v1/users/me/avatar", {
   method: "PATCH",
   headers: {
     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
@@ -53,7 +63,7 @@ export default class Api {
   },
   body: JSON.stringify({
     name: "Marie Skłodowska Curie",
-    link: "https://i.kym-cdn.com/entries/icons/original/000/046/728/alligator_kick.jpg"
+    avatar: "https://i.kym-cdn.com/entries/icons/original/000/046/728/alligator_kick.jpg"
   })
 });
   }
