@@ -139,5 +139,9 @@ const api = new Api({});
 api.getInitialCards()
 api.userAvatar();
 api.usersInfo();
+<<<<<<< HEAD
 
+=======
+api.addCard();
+>>>>>>> 833dbaeb7806d6cfb52c74903c38c386163981d3
 
