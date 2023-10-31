@@ -46,7 +46,7 @@ function handleAddCardFormSubmit(inputValues) {
   addCardFormElement.reset();
   newCardPopup.close();
   // api.addCard();
-  console.log(inputValues);
+  console.log();
 }
 
 function handleImageClick(data) {
@@ -122,8 +122,8 @@ cardList.renderItems(initialCards);
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
 fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
-// method: "PATCH",
-headers: {
+  // method: "PATCH",
+  headers: {
     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
     "Content-Type": "application/json",
   },
@@ -133,9 +133,7 @@ headers: {
     console.log(result);
   });
 
-
-
 const api = new Api({});
-api.getInitialCards()
+api.getInitialCards();
 api.userAvatar();
 api.usersInfo();
