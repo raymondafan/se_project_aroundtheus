@@ -1,45 +1,49 @@
 export default class Api {
-  constructor() {
-    // stuff
+  constructor({baseUrl, authToken}) {
+    this._baseUrl= baseUrl;
+    this._authToken= authToken
   }
+  // fetch by itself = GET method automatically
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
+        authorization: this._authToken,
       }
+    })
+    .then(res => { res.ok ? res.json() : Promise.reject(`Error: ${res.status}`) })
+    .catch((err) => {
+      console.error(err); // log the error to the console
     });
-  }
+      }
+
+
 
   _handleErrorResponse() {
     if (res.ok) {
       return res.json();
     }
     // if the server returns an error, reject the promise
-    return Promise.reject(`Error: ${res.status}`);
+
   }
 
-  addCard(inputValues) {
-    // the inputValues is passed from index.js and you put these in the body of your fetch request
-    // put your fetch request here
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-      method: "POST",
-      headers: {
-        authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: inputValues.name,
-        link: inputValues.link,
-      }),
-    }).then(this._handleErrorResponse);
-  }
+  // addCard(inputValues) {
+  //   // the inputValues is passed from index.js and you put these in the body of your fetch request
+  //   // put your fetch request here
+  //   return fetch(`${this._baseUrl}/cards`, {
+  //     method: "POST",
+  //     headers: {
+  //       authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       name: inputValues.name,
+  //       link: inputValues.link,
+  //     }),
+  //   })
+  // }
 
   usersInfo() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
         authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
@@ -54,7 +58,7 @@ export default class Api {
   profileInfo() {}
   userAvatar() {
     return fetch(
-      "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
+      `${this._baseUrl}/users/me/avatar`,
       {
         method: "PATCH",
         headers: {

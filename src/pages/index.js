@@ -36,6 +36,14 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 // const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 // const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  authToken: "7df31549-2772-46fa-8dab-555ea4e32993"
+});
+api.getInitialCards().then(res => console.log(res));
+api.userAvatar();
+api.usersInfo();
+
 function handlerProfileEditSubmit({ name, job }) {
   userInfo.setUserInfo(name, job);
   editCardPopup.close();
@@ -46,7 +54,7 @@ function handleAddCardFormSubmit(inputValues) {
   addCardFormElement.reset();
   newCardPopup.close();
   // api.addCard();
-  console.log();
+  // console.log();
 }
 
 function handleImageClick(data) {
@@ -133,7 +141,3 @@ fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
     console.log(result);
   });
 
-const api = new Api({});
-api.getInitialCards();
-api.userAvatar();
-api.usersInfo();
