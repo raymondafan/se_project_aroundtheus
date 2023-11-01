@@ -38,11 +38,11 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "7df31549-2772-46fa-8dab-555ea4e32993"
+  authToken: "7df31549-2772-46fa-8dab-555ea4e32993",
 });
-api.getInitialCards().then(res => console.log(res));
-api.userAvatar();
-api.usersInfo();
+
+// api.userAvatar();
+// api.usersInfo();
 
 function handlerProfileEditSubmit({ name, job }) {
   userInfo.setUserInfo(name, job);
@@ -125,19 +125,22 @@ const cardList = new Section(
   },
   selectors.cardSection
 );
-cardList.renderItems(initialCards);
+
+api.getInitialCards().then((cards) => {
+  cardList.renderItems(cards);
+});
+
 //userinfo instance
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
-fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
-  // method: "PATCH",
-  headers: {
-    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-    "Content-Type": "application/json",
-  },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-  });
-
+// fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+//   // method: "PATCH",
+//   headers: {
+//     authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+//     "Content-Type": "application/json",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((result) => {
+//     console.log(result);
+//   });
