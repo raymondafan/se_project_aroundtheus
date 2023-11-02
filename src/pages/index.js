@@ -3,7 +3,7 @@ import "../pages/index.css";
 //import all the classes
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
-import { initialCards, selectors, config } from "../utils/constants.js";
+import { selectors, config } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -38,11 +38,14 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "7df31549-2772-46fa-8dab-555ea4e32993",
+  headers: {
+    authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
+    "Content-Type": "application/json",
+  },
 });
 
 // api.userAvatar();
-// api.usersInfo();
+
 
 function handlerProfileEditSubmit({ name, job }) {
   userInfo.setUserInfo(name, job);
@@ -53,8 +56,8 @@ function handleAddCardFormSubmit(inputValues) {
   cardList.addItem(card);
   addCardFormElement.reset();
   newCardPopup.close();
-  // api.addCard();
-  // console.log();
+api.addCard(inputValues);
+  console.log(inputValues);
 }
 
 function handleImageClick(data) {
@@ -118,7 +121,6 @@ const createCard = (data) => {
 // section instance
 const cardList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       cardList.addItem(createCard(item));
     },
@@ -126,13 +128,16 @@ const cardList = new Section(
   selectors.cardSection
 );
 
+//userinfo instance
+const userInfo = new UserInfo(profileTitle, profileDescription);
+
 api.getInitialCards().then((cards) => {
   cardList.renderItems(cards);
 });
 
-//userinfo instance
-const userInfo = new UserInfo(profileTitle, profileDescription);
-
+api.usersInfo().then((userData)=>{
+  userInfo.setUserInfo(userData.name, userData.about);
+});
 // fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
 //   // method: "PATCH",
 //   headers: {
