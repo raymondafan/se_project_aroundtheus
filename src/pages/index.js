@@ -48,7 +48,9 @@ const api = new Api({
 
 
 function handlerProfileEditSubmit({ name, job }) {
-  userInfo.setUserInfo(name, job);
+  api.profileInfo({name, about:job}).then((userData)=>{
+    userInfo.setUserInfo(userData.name, userData.about)
+  });
   editCardPopup.close();
 }
 function handleAddCardFormSubmit(inputValues) {
@@ -138,6 +140,7 @@ api.getInitialCards().then((cards) => {
 api.usersInfo().then((userData)=>{
   userInfo.setUserInfo(userData.name, userData.about);
 });
+
 // fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
 //   // method: "PATCH",
 //   headers: {

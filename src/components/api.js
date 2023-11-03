@@ -37,13 +37,24 @@ export default class Api {
   usersInfo() {
     return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
     .then((res) => {
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       }
     );
   }
 
-  profileInfo() {
-    return Promise.all([this.usersInfo(), this.getInitialCards()]);
+  profileInfo(data) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+
+        headers: this._headers,
+
+      body: JSON.stringify(data)
+
+    })
+    .then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+     }
+   );
   }
 
   // userAvatar() {
