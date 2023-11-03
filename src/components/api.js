@@ -57,18 +57,15 @@ export default class Api {
    );
   }
 
-  // userAvatar() {
-  //   return fetch(`${this._baseUrl}/users/me/avatar`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       authorization: this._authToken,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       name: "Marie Skłodowska Curie",
-  //       avatar:
-  //         "https://i.kym-cdn.com/entries/icons/original/000/046/728/alligator_kick.jpg",
-  //     }),
-  //   });
-  // }
+  userAvatar() {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: "Marie Skłodowska Curie",
+        avatar:
+          "https://i.kym-cdn.com/entries/icons/original/000/046/728/alligator_kick.jpg",
+      }),
+    });
+  }
 }

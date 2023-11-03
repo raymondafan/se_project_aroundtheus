@@ -44,7 +44,7 @@ const api = new Api({
   },
 });
 
-// api.userAvatar();
+api.userAvatar();
 
 
 function handlerProfileEditSubmit({ name, job }) {
