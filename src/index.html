@@ -117,6 +117,41 @@
         </form>
       </div>
     </div>
+    <div class="modal" id="profile-picture-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="form modal__form" name="form" id="add-card-form">
+          <fieldset class="form__fieldset">
+            <input
+              class="form__input"
+              id="form-input-title"
+              placeholder="title"
+              type="text"
+              name="name"
+              maxlength="30"
+              minlength="1"
+              required
+            />
+            <span class="form__error" id="form-input-title-error"></span>
+            <input
+              class="form__input"
+              id="form-input-url"
+              placeholder="Image URL"
+              type="url"
+              name="link"
+              required
+            />
+            <span class="form__error" id="form-input-url-error"></span>
+          </fieldset>
+          <fieldset class="form__fieldset">
+            <button class="modal__button modal__button_disabled" type="submit">
+              Save
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview">
         <button class="modal__close" type="button"></button>
