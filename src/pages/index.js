@@ -15,7 +15,7 @@ const profilePictureModal= document.querySelector("#profile-picture-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
-const profilePicture = profilePictureModal.querySelector(".profile__image")
+const profilePicture = profilePictureModal.querySelector(".profile__image");
 const previewImage = previewImageModal.querySelector(".modal__image");
 const previewImageModalTitle = previewImageModal.querySelector(".modal__title");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -31,7 +31,7 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
-const profilePictureForm= profilePictureModal.querySelector(".modal__form")
+const profilePictureForm= profilePictureModal.querySelector(".modal__form");
 // const cardListEl = document.querySelector(".cards__list");
 // const cardTemplate =
 //   document.querySelector("#card-template").content.firstElementChild;
@@ -108,10 +108,10 @@ profileEditButton.addEventListener("click", () => {
 const newProfilePicturePopup= new PopupWithForm(
   "#profile-picture-modal",
 );
-newProfilePicturePopup.setEventListeners();
-profilePicture.addEventListener("click", ()=>{
-  profilePicture.open();
-});
+// newProfilePicturePopup.setEventListeners();
+// profilePicture.addEventListener("click", ()=>{
+//   profilePicture.open();
+// });
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
 cardPreviewModal.setEventListeners();
