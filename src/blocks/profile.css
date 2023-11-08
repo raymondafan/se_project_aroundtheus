@@ -70,6 +70,18 @@
   background-position: center;
   margin-right: 26px;
 }
+.profile__button-avatar{
+background: transparent url(../images/bigpen.svg) center no-repeat;
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  border: none;
+  cursor: pointer;
+  opacity: 100%;
+}
+.profile__button-avatar:hover{
+opacity: 80%;
+}
 @media screen and (max-width: 760px) {
   .profile__add-button {
     height: 50px;

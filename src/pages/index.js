@@ -36,6 +36,7 @@ const profilePictureForm= profilePictureModal.querySelector(".modal__form");
 // const cardTemplate =
 //   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
+const addNewPfpButton= document.querySelector(".profile__add-avatar");
 // const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 // const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
@@ -108,7 +109,8 @@ profileEditButton.addEventListener("click", () => {
 const newProfilePicturePopup= new PopupWithForm(
   "#profile-picture-modal",
 );
-// newProfilePicturePopup.setEventListeners();
+newProfilePicturePopup.setEventListeners();
+//
 // profilePicture.addEventListener("click", ()=>{
 //   profilePicture.open();
 // });
