@@ -15,7 +15,7 @@ const profilePictureModal= document.querySelector("#profile-picture-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
-const profilePicture = profilePictureModal.querySelector(".profile__image");
+const profilePicture = document.querySelector(".profile__image");
 const previewImage = previewImageModal.querySelector(".modal__image");
 const previewImageModalTitle = previewImageModal.querySelector(".modal__title");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -36,7 +36,7 @@ const profilePictureForm= profilePictureModal.querySelector(".modal__form");
 // const cardTemplate =
 //   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
-const addNewPfpButton= document.querySelector(".profile__add-avatar");
+const addNewPfpButton= document.querySelector(".profile__button-avatar");
 // const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 // const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
@@ -63,9 +63,12 @@ function handleAddCardFormSubmit(inputValues) {
   addCardFormElement.reset();
   newCardPopup.close();
 api.addCard(inputValues);
+
+}
+function handleAddAvatarSubmit (inputValues){
+  profilePicture.src= inputValues.link;
   console.log(inputValues);
 }
-
 function handleImageClick(data) {
   previewImage.src = data.link;
   previewImage.alt = `Photo of ${data.name}`;
@@ -78,8 +81,10 @@ function handleImageClick(data) {
 //form validation instance
 const addCardValidator = new FormValidator(config, addCardFormElement);
 const addEditProfileValidator = new FormValidator(config, profileEditForm);
+const addPfpValidator = new FormValidator(config, profilePictureForm);
 addCardValidator.enableValidation();
 addEditProfileValidator.enableValidation();
+addPfpValidator.enableValidation();
 //new card instance
 const newCardPopup = new PopupWithForm(
   "#add-card-modal",
@@ -108,12 +113,14 @@ profileEditButton.addEventListener("click", () => {
 //new pfp instance
 const newProfilePicturePopup= new PopupWithForm(
   "#profile-picture-modal",
+  handleAddAvatarSubmit
 );
 newProfilePicturePopup.setEventListeners();
-//
-// profilePicture.addEventListener("click", ()=>{
-//   profilePicture.open();
-// });
+
+addNewPfpButton.addEventListener("click", ()=>{
+  newProfilePicturePopup.open();
+  addPfpValidator.toggleButtonState();
+});
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
 cardPreviewModal.setEventListeners();
@@ -143,7 +150,7 @@ const cardList = new Section(
 );
 
 //userinfo instance
-const userInfo = new UserInfo(profileTitle, profileDescription);
+const userInfo = new UserInfo(profileTitle, profileDescription, profilePicture);
 
 api.getInitialCards().then((cards) => {
   cardList.renderItems(cards);
