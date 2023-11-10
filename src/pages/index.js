@@ -11,7 +11,7 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/api.js";
 
 //Elements
-const profilePictureModal= document.querySelector("#profile-picture-modal");
+const profilePictureModal = document.querySelector("#profile-picture-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
@@ -31,12 +31,12 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
-const profilePictureForm= profilePictureModal.querySelector(".modal__form");
+const profilePictureForm = profilePictureModal.querySelector(".modal__form");
 // const cardListEl = document.querySelector(".cards__list");
 // const cardTemplate =
 //   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
-const addNewPfpButton= document.querySelector(".profile__button-avatar");
+const addNewPfpButton = document.querySelector(".profile__button-avatar");
 // const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 // const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
@@ -48,12 +48,12 @@ const api = new Api({
   },
 });
 
-api.userAvatar();
-
-
+api.deleteCard().then(()=>{
+  
+});
 function handlerProfileEditSubmit({ name, job }) {
-  api.profileInfo({name, about:job}).then((userData)=>{
-    userInfo.setUserInfo(userData.name, userData.about)
+  api.profileInfo({ name, about: job }).then((userData) => {
+    userInfo.setUserInfo(userData.name, userData.about);
   });
   editCardPopup.close();
 }
@@ -62,12 +62,11 @@ function handleAddCardFormSubmit(inputValues) {
   cardList.addItem(card);
   addCardFormElement.reset();
   newCardPopup.close();
-api.addCard(inputValues);
-
+  api.addCard(inputValues);
 }
-function handleAddAvatarSubmit (inputValues){
-  profilePicture.src= inputValues.link;
-  console.log(inputValues);
+function handleAddAvatarSubmit(inputValues) {
+  profilePicture.src = inputValues.link;
+  api.userAvatar(inputValues);
 }
 function handleImageClick(data) {
   previewImage.src = data.link;
@@ -111,13 +110,13 @@ profileEditButton.addEventListener("click", () => {
   editCardPopup.open();
 });
 //new pfp instance
-const newProfilePicturePopup= new PopupWithForm(
+const newProfilePicturePopup = new PopupWithForm(
   "#profile-picture-modal",
   handleAddAvatarSubmit
 );
 newProfilePicturePopup.setEventListeners();
 
-addNewPfpButton.addEventListener("click", ()=>{
+addNewPfpButton.addEventListener("click", () => {
   newProfilePicturePopup.open();
   addPfpValidator.toggleButtonState();
 });
@@ -156,8 +155,9 @@ api.getInitialCards().then((cards) => {
   cardList.renderItems(cards);
 });
 
-api.usersInfo().then((userData)=>{
+api.usersInfo().then((userData) => {
   userInfo.setUserInfo(userData.name, userData.about);
+  userInfo.setAvatarInfo(userData.avatar);
 });
 
 // fetch("https://around-api.en.tripleten-services.com/v1/users/me", {

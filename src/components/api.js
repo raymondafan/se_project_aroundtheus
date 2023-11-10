@@ -23,21 +23,24 @@ export default class Api {
     // put your fetch request here
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: "7df31549-2772-46fa-8dab-555ea4e32993",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: inputValues.name,
         link: inputValues.link,
       }),
-    })
+    });
+  }
+  deleteCard(cardId){
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
   }
 
   usersInfo() {
-    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
-    .then((res) => {
-       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(
+      (res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       }
     );
   }
@@ -46,26 +49,23 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
 
-        headers: this._headers,
+      headers: this._headers,
 
-      body: JSON.stringify(data)
-
-    })
-    .then((res) => {
+      body: JSON.stringify(data),
+    }).then((res) => {
       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-     }
-   );
+    });
   }
 
-  userAvatar() {
+  userAvatar(inputValues) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        avatar:
-          "https://i.kym-cdn.com/entries/icons/original/000/046/728/alligator_kick.jpg",
+        avatar: inputValues.link,
       }),
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
     });
   }
 }
