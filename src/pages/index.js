@@ -11,6 +11,7 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/api.js";
 
 //Elements
+const removeCardModal = document.querySelector("#remove-card-modal");
 const profilePictureModal = document.querySelector("#profile-picture-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -37,6 +38,7 @@ const profilePictureForm = profilePictureModal.querySelector(".modal__form");
 //   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addNewPfpButton = document.querySelector(".profile__button-avatar");
+const removeCardModalButton = document.querySelector(".card__trash-button");
 // const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 // const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
@@ -64,6 +66,7 @@ function handleAddCardFormSubmit(inputValues) {
   newCardPopup.close();
   api.addCard(inputValues);
 }
+
 function handleAddAvatarSubmit(inputValues) {
   profilePicture.src = inputValues.link;
   api.userAvatar(inputValues);
@@ -120,6 +123,15 @@ addNewPfpButton.addEventListener("click", () => {
   newProfilePicturePopup.open();
   addPfpValidator.toggleButtonState();
 });
+//remove card instance
+const newRemoveCardModal = new PopupWithForm(
+  "#remove-card-modal",
+
+);
+newRemoveCardModal.setEventListeners();
+removeCardModalButton.addEventListener("click", () => {
+  newRemoveCardModal.open();
+});
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
 cardPreviewModal.setEventListeners();
@@ -127,20 +139,19 @@ cardPreviewModal.setEventListeners();
 const createCard = (data) => {
   const cardEl = new Card(
     {
+      id: data._id,
+      isLiked: data.isLiked,
       name: data.name,
       link: data.link,
       handleImageClick: (imgData) => {
         cardPreviewModal.open(imgData);
       },
-      handleRemoveCardClick: ()=>{
+      handleRemoveCardClick: () => {
         const id = cardEl.getId();
-        api.deleteCard(id).then((res)=>{
-           cardEl.handleRemoveCard(res);
-
-        })
-
-
-      }
+        api.deleteCard(id).then((res) => {
+          cardEl.handleRemoveCard(res);
+        });
+      },
     },
     selectors.cardTemplate
   );

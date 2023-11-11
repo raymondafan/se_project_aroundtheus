@@ -1,13 +1,13 @@
 export default class Card {
   constructor(
-    { id, name, link, handleImageClick, handleRemoveCardClick },
+    { id, isLiked, name, link, handleImageClick, handleRemoveCardClick },
     cardSelector
   ) {
     //cardSelector= #card-template
     this._id = id;
     this._name = name;
     this._link = link;
-
+this._isLiked= isLiked;
     this._cardSelector = cardSelector; //template
     this._handleImageClick = handleImageClick;
     this._handleRemoveCardClick = handleRemoveCardClick;

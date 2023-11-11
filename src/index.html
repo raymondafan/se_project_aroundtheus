@@ -126,7 +126,6 @@
         <h2 class="modal__heading">Change profile picture</h2>
         <form class="form modal__form" name="form" id="add-card-form">
           <fieldset class="form__fieldset">
-            <span class="form__error" id="form-input-title-error"></span>
             <input
               class="form__input"
               id="form-input-url"
@@ -144,6 +143,19 @@
           </fieldset>
         </form>
       </div>
+    </div>
+    <div class="modal" id="remove-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <h2 class="modal__heading">Are you sure?</h2>
+        <form class="form modal__form" name="form" id="add-card-form">
+          <fieldset class="form__fieldset">
+            <button class="modal__button modal__button_disabled" type="submit">
+             Yes
+            </button>
+          </fieldset>
+        </form>
+      </div>0
     </div>
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview">
