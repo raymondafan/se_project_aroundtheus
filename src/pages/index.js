@@ -134,8 +134,12 @@ const createCard = (data) => {
       },
       handleRemoveCardClick: ()=>{
         const id = cardEl.getId();
-        api.deleteCard(id);
-        cardEl.handleRemoveCard();
+        api.deleteCard(id).then((res)=>{
+           cardEl.handleRemoveCard(res);
+
+        })
+
+
       }
     },
     selectors.cardTemplate

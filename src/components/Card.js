@@ -1,17 +1,21 @@
 export default class Card {
-  constructor({ data, name, link, handleImageClick, handleRemoveCardClick}, cardSelector) {
+  constructor(
+    { id, name, link, handleImageClick, handleRemoveCardClick },
+    cardSelector
+  ) {
     //cardSelector= #card-template
+    this._id = id;
     this._name = name;
     this._link = link;
-    this._id= data.id;
+
     this._cardSelector = cardSelector; //template
     this._handleImageClick = handleImageClick;
-    this._handleRemoveCardClick= handleRemoveCardClick;
+    this._handleRemoveCardClick = handleRemoveCardClick;
   }
 
-getId(){
-  return this._id= data.id;
-}
+  getId() {
+    return this._id;
+  }
 
   _setEventListeners() {
     this._cardElement
