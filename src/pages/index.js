@@ -48,9 +48,9 @@ const api = new Api({
   },
 });
 
-api.deleteCard().then(()=>{
-  
-});
+// api.deleteCard(cardId).then((data)=>{
+// data.getId();
+// });
 function handlerProfileEditSubmit({ name, job }) {
   api.profileInfo({ name, about: job }).then((userData) => {
     userInfo.setUserInfo(userData.name, userData.about);
@@ -132,6 +132,11 @@ const createCard = (data) => {
       handleImageClick: (imgData) => {
         cardPreviewModal.open(imgData);
       },
+      handleRemoveCardClick: ()=>{
+        const id = cardEl.getId();
+        api.deleteCard(id);
+        cardEl.handleRemoveCard();
+      }
     },
     selectors.cardTemplate
   );
