@@ -11,7 +11,7 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/api.js";
 
 //Elements
-const removeCardModal = document.querySelector("#remove-card-modal");
+
 const profilePictureModal = document.querySelector("#profile-picture-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -38,7 +38,6 @@ const profilePictureForm = profilePictureModal.querySelector(".modal__form");
 //   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addNewPfpButton = document.querySelector(".profile__button-avatar");
-const removeCardModalButton = document.querySelector(".card__trash-button");
 // const cardTitleInput = addCardFormElement.querySelector("#form-input-title");
 // const cardUrlInput = addCardFormElement.querySelector("#form-input-url");
 
@@ -124,14 +123,10 @@ addNewPfpButton.addEventListener("click", () => {
   addPfpValidator.toggleButtonState();
 });
 //remove card instance
-const newRemoveCardModal = new PopupWithForm(
-  "#remove-card-modal",
+const newRemoveCardModal = new PopupWithForm("#remove-card-modal");
 
-);
 newRemoveCardModal.setEventListeners();
-removeCardModalButton.addEventListener("click", () => {
-  newRemoveCardModal.open();
-});
+
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
 cardPreviewModal.setEventListeners();
@@ -146,10 +141,14 @@ const createCard = (data) => {
       handleImageClick: (imgData) => {
         cardPreviewModal.open(imgData);
       },
+
       handleRemoveCardClick: () => {
         const id = cardEl.getId();
-        api.deleteCard(id).then((res) => {
-          cardEl.handleRemoveCard(res);
+        newRemoveCardModal.open();
+        newRemoveCardModal.setSubmitAction(() => {
+          api.deleteCard(id).then((res) => {
+            cardEl.handleRemoveCard(res);
+          });
         });
       },
     },
