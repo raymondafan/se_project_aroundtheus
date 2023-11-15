@@ -49,9 +49,6 @@ const api = new Api({
   },
 });
 
-// api.deleteCard(cardId).then((data)=>{
-// data.getId();
-// });
 function handlerProfileEditSubmit({ name, job }) {
   api.profileInfo({ name, about: job }).then((userData) => {
     userInfo.setUserInfo(userData.name, userData.about);
@@ -76,7 +73,9 @@ function handleImageClick(data) {
   previewImageModalTitle.textContent = data.name;
   cardPreviewModal.open();
 }
+// function handleLikeIcon(card){
 
+// }
 //new instances
 
 //form validation instance
@@ -150,6 +149,17 @@ const createCard = (data) => {
             cardEl.handleRemoveCard(res);
           });
         });
+      },
+      handleLikeIcon: (card) => {
+        if (card.isLiked) {
+          api.addLike(card.id).then(() => {
+            card.getLikeStatus(true);
+          });
+        } else {
+          api.removeLike(card.id).then(() => {
+            card.getLikeStatus(false);
+          });
+        }
       },
     },
     selectors.cardTemplate

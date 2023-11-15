@@ -1,27 +1,32 @@
 export default class Card {
   constructor(
-    { id, isLiked, name, link, handleImageClick, handleRemoveCardClick },
+    { id, isLiked, name, link, handleImageClick, handleRemoveCardClick, handleLikeIcon },
     cardSelector
   ) {
     //cardSelector= #card-template
     this._id = id;
     this._name = name;
     this._link = link;
-this._isLiked= isLiked;
+    this._isLiked = isLiked;
     this._cardSelector = cardSelector; //template
     this._handleImageClick = handleImageClick;
     this._handleRemoveCardClick = handleRemoveCardClick;
+    this._handleLikeIcon = handleLikeIcon;
   }
 
   getId() {
     return this._id;
+  }
+  getLikeStatus() {
+    this._isLiked = isLiked;
+    this.handleLikeIcon();
   }
 
   _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this.handleLikeIcon();
       });
     this.cardImageEl.addEventListener("click", () => {
       this._handleImageClick({
@@ -38,7 +43,7 @@ this._isLiked= isLiked;
       });
   }
 
-  _handleLikeIcon() {
+  handleLikeIcon() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
