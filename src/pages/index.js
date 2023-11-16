@@ -151,7 +151,7 @@ const createCard = (data) => {
         });
       },
       handleLikeIcon: (card) => {
-        if (card.isLiked) {
+        if (!card.getLikeStatus()) {
           api.addLike(card.id).then(() => {
             card.getLikeStatus(true);
           });

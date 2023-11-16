@@ -17,16 +17,23 @@ export default class Card {
   getId() {
     return this._id;
   }
+
+  setLikeStatus(status) {
+    this._isLiked = status;
+
+  }
+
   getLikeStatus() {
-    this._isLiked = isLiked;
-    this.handleLikeIcon();
+    return this._isLiked;
   }
 
   _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this.handleLikeIcon();
+        this._handleLikeIcon(this).then(()=>{
+          handleLikeIcon();
+        });
       });
     this.cardImageEl.addEventListener("click", () => {
       this._handleImageClick({
