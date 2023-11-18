@@ -32,7 +32,9 @@ export default class Card {
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeIcon(this).then(()=>{
-          handleLikeIcon();
+          this._cardElement
+          .querySelector(".card__like-button")
+          .classList.toggle("card__like-button_active");
         });
       });
     this.cardImageEl.addEventListener("click", () => {
@@ -50,11 +52,11 @@ export default class Card {
       });
   }
 
-  handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
-  }
+  // handleLikeIcon() {
+  //   this._cardElement
+  //     .querySelector(".card__like-button")
+  //     .classList.toggle("card__like-button_active");
+  // }
   handleRemoveCard() {
     this._cardElement.remove();
     this._cardElement = null;

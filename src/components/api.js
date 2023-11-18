@@ -70,7 +70,7 @@ export default class Api {
       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
     });
   }
-  addLike(cardId){
+  addLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
@@ -78,13 +78,12 @@ export default class Api {
       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
     });
   }
-removeLike(cardId){
-  return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-    method: "DELETE",
-
-    headers: this._headers,
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
-}
+  removeLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
