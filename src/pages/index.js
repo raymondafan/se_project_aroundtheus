@@ -152,11 +152,11 @@ const createCard = (data) => {
       },
       handleLikeIcon: (card) => {
         if (!card.getLikeStatus()) {
-          api.addLike(card.id).then(() => {
+         return api.addLike(card._id).then(() => {
             card.getLikeStatus(true);
           });
         } else {
-          api.removeLike(card.id).then(() => {
+         return api.removeLike(card._id).then(() => {
             card.getLikeStatus(false);
           });
         }
