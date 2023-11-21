@@ -73,9 +73,9 @@ function handleImageClick(data) {
   previewImageModalTitle.textContent = data.name;
   cardPreviewModal.open();
 }
-// function handleLikeIcon(card){
-
-// }
+function handleSavingButtons(){
+ 
+}
 //new instances
 
 //form validation instance
@@ -154,11 +154,11 @@ const createCard = (data) => {
         if (!card.getLikeStatus()) {
          return api.addLike(card._id).then(() => {
             card.getLikeStatus(true);
-          });
+          }).catch(console.err);
         } else {
          return api.removeLike(card._id).then(() => {
             card.getLikeStatus(false);
-          });
+          }).catch(console.err);
         }
       },
     },
