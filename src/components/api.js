@@ -28,6 +28,8 @@ export default class Api {
         name: inputValues.name,
         link: inputValues.link,
       }),
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
     });
   }
   deleteCard(cardId) {

@@ -50,22 +50,49 @@ const api = new Api({
 });
 
 function handlerProfileEditSubmit({ name, job }) {
-  api.profileInfo({ name, about: job }).then((userData) => {
-    userInfo.setUserInfo(userData.name, userData.about);
-  });
-  editCardPopup.close();
+  editCardPopup.setLoadingText(true);
+  api
+    .profileInfo({ name, about: job })
+    .then((userData) => {
+      userInfo.setUserInfo(userData.name, userData.about);
+      editCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      editCardPopup.setLoadingText(false);
+    });
 }
 function handleAddCardFormSubmit(inputValues) {
-  const card = createCard(inputValues);
+
+  newCardPopup.setLoadingText(true);
+  api.addCard(inputValues)
+  .then((res)=>{
+    const card = createCard(res);
   cardList.addItem(card);
   addCardFormElement.reset();
   newCardPopup.close();
-  api.addCard(inputValues);
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+  .finally(() => {
+    newCardPopup.setLoadingText(false);
+  });
 }
 
 function handleAddAvatarSubmit(inputValues) {
-  profilePicture.src = inputValues.link;
-  api.userAvatar(inputValues);
+newProfilePicturePopup.setLoadingText(true);
+  api.userAvatar(inputValues).then(()=>{
+ profilePicture.src = inputValues.link;
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+  .finally(() => {
+    newProfilePicturePopup.setLoadingText(false);
+  });
 }
 function handleImageClick(data) {
   previewImage.src = data.link;
@@ -73,9 +100,7 @@ function handleImageClick(data) {
   previewImageModalTitle.textContent = data.name;
   cardPreviewModal.open();
 }
-function handleSavingButtons(){
- 
-}
+function handleSavingButtons() {}
 //new instances
 
 //form validation instance
@@ -152,13 +177,19 @@ const createCard = (data) => {
       },
       handleLikeIcon: (card) => {
         if (!card.getLikeStatus()) {
-         return api.addLike(card._id).then(() => {
-            card.getLikeStatus(true);
-          }).catch(console.err);
+          return api
+            .addLike(card._id)
+            .then(() => {
+              card.getLikeStatus(true);
+            })
+            .catch(console.err);
         } else {
-         return api.removeLike(card._id).then(() => {
-            card.getLikeStatus(false);
-          }).catch(console.err);
+          return api
+            .removeLike(card._id)
+            .then(() => {
+              card.getLikeStatus(false);
+            })
+            .catch(console.err);
         }
       },
     },
@@ -186,7 +217,7 @@ api.getInitialCards().then((cards) => {
 
 api.usersInfo().then((userData) => {
   userInfo.setUserInfo(userData.name, userData.about);
-  userInfo.setAvatarInfo(userData.avatar);
+  userInfo.setAvatarInfo(userData.avatar)
 });
 
 // fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
