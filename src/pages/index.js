@@ -100,7 +100,7 @@ function handleImageClick(data) {
   previewImageModalTitle.textContent = data.name;
   cardPreviewModal.open();
 }
-function handleSavingButtons() {}
+
 //new instances
 
 //form validation instance
@@ -169,9 +169,17 @@ const createCard = (data) => {
       handleRemoveCardClick: () => {
         const id = cardEl.getId();
         newRemoveCardModal.open();
+
         newRemoveCardModal.setSubmitAction(() => {
+          newRemoveCardModal.setLoadingText(true);
           api.deleteCard(id).then((res) => {
             cardEl.handleRemoveCard(res);
+
+          }) .catch((err) => {
+            console.error(err);
+          })
+          .finally(() => {
+            newRemoveCardModal.setLoadingText(false);
           });
         });
       },
