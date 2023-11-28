@@ -8,7 +8,7 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import Api from "../components/api.js";
+import Api from "../components/Api.js";
 
 //Elements
 
@@ -49,8 +49,8 @@ const api = new Api({
   },
 });
 
-function handlerProfileEditSubmit({ name, job }) {
-  editCardPopup.setLoadingText(true);
+function handleProfileEditSubmit({ name, job }) {
+  editCardPopup.renderLoading(true);
   api
     .profileInfo({ name, about: job })
     .then((userData) => {
@@ -61,38 +61,40 @@ function handlerProfileEditSubmit({ name, job }) {
       console.error(err);
     })
     .finally(() => {
-      editCardPopup.setLoadingText(false);
+      editCardPopup.renderLoading(false);
     });
 }
 function handleAddCardFormSubmit(inputValues) {
-
-  newCardPopup.setLoadingText(true);
-  api.addCard(inputValues)
-  .then((res)=>{
-    const card = createCard(res);
-  cardList.addItem(card);
-  addCardFormElement.reset();
-  newCardPopup.close();
-  })
-  .catch((err) => {
-    console.error(err);
-  })
-  .finally(() => {
-    newCardPopup.setLoadingText(false);
-  });
+  newCardPopup.renderLoading(true);
+  api
+    .addCard(inputValues)
+    .then((res) => {
+      const card = createCard(res);
+      cardList.addItem(card);
+      addCardFormElement.reset();
+      newCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      newCardPopup.renderLoading(false);
+    });
 }
 
 function handleAddAvatarSubmit(inputValues) {
-newProfilePicturePopup.setLoadingText(true);
-  api.userAvatar(inputValues).then(()=>{
- profilePicture.src = inputValues.link;
-  })
-  .catch((err) => {
-    console.error(err);
-  })
-  .finally(() => {
-    newProfilePicturePopup.setLoadingText(false);
-  });
+  newProfilePicturePopup.renderLoading(true);
+  api
+    .userAvatar(inputValues)
+    .then(() => {
+      profilePicture.src = inputValues.link;
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      newProfilePicturePopup.renderLoading(false);
+    });
 }
 function handleImageClick(data) {
   previewImage.src = data.link;
@@ -124,7 +126,7 @@ addNewCardButton.addEventListener("click", () => {
 //edit cards instace
 const editCardPopup = new PopupWithForm(
   "#profile-edit-modal",
-  handlerProfileEditSubmit
+  handleProfileEditSubmit
 );
 
 editCardPopup.setEventListeners();
@@ -171,16 +173,18 @@ const createCard = (data) => {
         newRemoveCardModal.open();
 
         newRemoveCardModal.setSubmitAction(() => {
-          newRemoveCardModal.setLoadingText(true);
-          api.deleteCard(id).then((res) => {
-            cardEl.handleRemoveCard(res);
-
-          }) .catch((err) => {
-            console.error(err);
-          })
-          .finally(() => {
-            newRemoveCardModal.setLoadingText(false);
-          });
+          newRemoveCardModal.renderLoading(true);
+          api
+            .deleteCard(id)
+            .then((res) => {
+              cardEl.handleRemoveCard(res);
+            })
+            .catch((err) => {
+              console.error(err);
+            })
+            .finally(() => {
+              newRemoveCardModal.renderLoading(false);
+            });
         });
       },
       handleLikeIcon: (card) => {
@@ -219,13 +223,18 @@ const cardList = new Section(
 //userinfo instance
 const userInfo = new UserInfo(profileTitle, profileDescription, profilePicture);
 
-api.getInitialCards().then((cards) => {
-  cardList.renderItems(cards);
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    cardList.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 api.usersInfo().then((userData) => {
   userInfo.setUserInfo(userData.name, userData.about);
-  userInfo.setAvatarInfo(userData.avatar)
+  userInfo.setAvatarInfo(userData.avatar);
 });
 
 // fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
