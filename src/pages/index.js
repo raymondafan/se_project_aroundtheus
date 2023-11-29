@@ -194,14 +194,14 @@ const createCard = (data) => {
             .then(() => {
               card.setLikeStatus(true);
             })
-            .catch(console.err);
+            .catch(console.error);
         } else {
           api
             .removeLike(card._id)
             .then(() => {
               card.setLikeStatus(false);
             })
-            .catch(console.err);
+            .catch(console.error);
         }
       },
     },
