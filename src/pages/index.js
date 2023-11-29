@@ -165,7 +165,6 @@ const createCard = (data) => {
       link: data.link,
       handleImageClick: (name, link) => {
         cardPreviewModal.open(name, link);
-      
       },
 
       handleRemoveCardClick: () => {
@@ -190,14 +189,14 @@ const createCard = (data) => {
       },
       handleLikeIcon: (card) => {
         if (!card.getLikeStatus()) {
-           api
+          api
             .addLike(card._id)
             .then(() => {
               card.setLikeStatus(true);
             })
             .catch(console.err);
         } else {
-           api
+          api
             .removeLike(card._id)
             .then(() => {
               card.setLikeStatus(false);
