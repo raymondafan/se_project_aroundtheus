@@ -172,7 +172,7 @@ const createCard = (data) => {
         removeCardModal.open();
 
         removeCardModal.setSubmitAction(() => {
-          removeCardModal.renderLoading(true);
+          removeCardModal.renderLoading(true, "Deleting...");
           api
             .deleteCard(id)
             .then((res) => {
