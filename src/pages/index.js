@@ -71,7 +71,6 @@ function handleAddCardFormSubmit(inputValues) {
     .then((res) => {
       const card = createCard(res);
       cardList.addItem(card);
-      addCardFormElement.reset();
       newCardPopup.close();
     })
     .catch((err) => {
@@ -87,7 +86,8 @@ function handleAddAvatarSubmit(inputValues) {
   api
     .userAvatar(inputValues)
     .then(() => {
-      profilePicture.src = inputValues.link;
+      userInfo.setAvatarInfo(inputValues.link);
+      newProfilePicturePopup.close();
     })
     .catch((err) => {
       console.error(err);
@@ -96,12 +96,12 @@ function handleAddAvatarSubmit(inputValues) {
       newProfilePicturePopup.renderLoading(false);
     });
 }
-function handleImageClick(data) {
-  previewImage.src = data.link;
-  previewImage.alt = `Photo of ${data.name}`;
-  previewImageModalTitle.textContent = data.name;
-  cardPreviewModal.open();
-}
+// function handleImageClick(data) {
+//   previewImage.src = data.link;
+//   previewImage.alt = `Photo of ${data.name}`;
+//  previewImageModalTitle.textContent = data.name;
+//   cardPreviewModal.open();
+// }
 
 //new instances
 
@@ -149,10 +149,9 @@ addNewPfpButton.addEventListener("click", () => {
   addPfpValidator.toggleButtonState();
 });
 //remove card instance
-const newRemoveCardModal = new PopupWithForm("#remove-card-modal");
+const removeCardModal = new PopupWithForm("#remove-card-modal");
 
-newRemoveCardModal.setEventListeners();
-
+removeCardModal.setEventListeners();
 //preview image instance
 const cardPreviewModal = new PopupWithImage(selectors.previewModal);
 cardPreviewModal.setEventListeners();
@@ -164,42 +163,44 @@ const createCard = (data) => {
       isLiked: data.isLiked,
       name: data.name,
       link: data.link,
-      handleImageClick: (imgData) => {
-        cardPreviewModal.open(imgData);
+      handleImageClick: (name, link) => {
+        cardPreviewModal.open(name, link);
+      
       },
 
       handleRemoveCardClick: () => {
         const id = cardEl.getId();
-        newRemoveCardModal.open();
+        removeCardModal.open();
 
-        newRemoveCardModal.setSubmitAction(() => {
-          newRemoveCardModal.renderLoading(true);
+        removeCardModal.setSubmitAction(() => {
+          removeCardModal.renderLoading(true);
           api
             .deleteCard(id)
             .then((res) => {
               cardEl.handleRemoveCard(res);
+              removeCardModal.close();
             })
             .catch((err) => {
               console.error(err);
             })
             .finally(() => {
-              newRemoveCardModal.renderLoading(false);
+              removeCardModal.renderLoading(false);
             });
         });
       },
       handleLikeIcon: (card) => {
         if (!card.getLikeStatus()) {
-          return api
+           api
             .addLike(card._id)
             .then(() => {
-              card.getLikeStatus(true);
+              card.setLikeStatus(true);
             })
             .catch(console.err);
         } else {
-          return api
+           api
             .removeLike(card._id)
             .then(() => {
-              card.getLikeStatus(false);
+              card.setLikeStatus(false);
             })
             .catch(console.err);
         }
