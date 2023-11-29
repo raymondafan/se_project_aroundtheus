@@ -232,10 +232,15 @@ api
     console.error(err);
   });
 
-api.usersInfo().then((userData) => {
-  userInfo.setUserInfo(userData.name, userData.about);
-  userInfo.setAvatarInfo(userData.avatar);
-});
+api
+  .usersInfo()
+  .then((userData) => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setAvatarInfo(userData.avatar);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 // fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
 //   // method: "PATCH",
