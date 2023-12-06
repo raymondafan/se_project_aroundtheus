@@ -20,11 +20,14 @@
 
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div>
+            <button class="profile__button-avatar" type="button"></button>
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Avatar"
+              class="profile__image"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -111,8 +114,43 @@
           </fieldset>
           <fieldset class="form__fieldset">
             <button class="modal__button modal__button_disabled" type="submit">
+              Create
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="profile-picture-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="form modal__form" name="form" id="add-card-form">
+          <fieldset class="form__fieldset">
+            <input
+              class="form__input"
+              id="form-input-url"
+              placeholder="Image URL"
+              type="url"
+              name="link"
+              required
+            />
+            <span class="form__error" id="form-input-url-error"></span>
+          </fieldset>
+          <fieldset class="form__fieldset">
+            <button class="modal__button modal__button_disabled" type="submit">
               Save
             </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="remove-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <h2 class="modal__heading">Are you sure?</h2>
+        <form class="form modal__form" name="form" id="add-card-form">
+          <fieldset class="form__fieldset">
+            <button class="modal__button" type="submit">Yes</button>
           </fieldset>
         </form>
       </div>

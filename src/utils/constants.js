@@ -39,3 +39,4 @@ export const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "popup__error_visible",
 };
+0

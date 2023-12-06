@@ -1,38 +1,70 @@
 export default class Card {
-  constructor({ name, link, handleImageClick }, cardSelector) {
+  constructor(
+    {
+      id,
+      isLiked,
+      name,
+      link,
+      handleImageClick,
+      handleRemoveCardClick,
+      handleLikeIcon,
+    },
+    cardSelector
+  ) {
     //cardSelector= #card-template
+    this._id = id;
     this._name = name;
     this._link = link;
+    this._isLiked = isLiked;
     this._cardSelector = cardSelector; //template
     this._handleImageClick = handleImageClick;
+    this._handleRemoveCardClick = handleRemoveCardClick;
+    this._handleLikeIcon = handleLikeIcon;
   }
+
+  getId() {
+    return this._id;
+  }
+
+  setLikeStatus(status) {
+    this._isLiked = status;
+    this.renderLikes();
+  }
+
+  getLikeStatus() {
+    return this._isLiked;
+  }
+
   _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this._handleLikeIcon(this);
       });
     this.cardImageEl.addEventListener("click", () => {
-      this._handleImageClick({
-        name: this._name,
-        link: this._link,
-      });
+      this._handleImageClick(this._name, this._link);
     });
 
     //".card__trash-button"
     this._cardElement
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
-        this._handleRemoveCard();
+        this._handleRemoveCardClick();
       });
   }
 
-  _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+  renderLikes() {
+    if (this._isLiked) {
+      this._cardElement
+        .querySelector(".card__like-button")
+        .classList.add("card__like-button_active");
+    } else {
+      this._cardElement
+        .querySelector(".card__like-button")
+        .classList.remove("card__like-button_active");
+    }
   }
-  _handleRemoveCard() {
+  handleRemoveCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
@@ -51,6 +83,7 @@ export default class Card {
     this.cardTitleEl.textContent = this._name;
     //get the card view
     this._setEventListeners();
+    this.renderLikes();
     // return card
     return this._cardElement;
   }

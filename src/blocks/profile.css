@@ -70,6 +70,21 @@
   background-position: center;
   margin-right: 26px;
 }
+.profile__button-avatar {
+  background: transparent url(../images/bigpen.svg) center no-repeat;
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+  border-radius: 50%;
+}
+.profile__button-avatar:hover {
+  opacity: 1;
+  background-color: #000000cc;
+}
 @media screen and (max-width: 760px) {
   .profile__add-button {
     height: 50px;
